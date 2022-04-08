@@ -1,4 +1,4 @@
-package Esprit.tests;
+package Esprit.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

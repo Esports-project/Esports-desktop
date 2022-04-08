@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 
-
-
 public class ServiceProduit {
     private Connection cnx;
     private PreparedStatement ste;
@@ -30,10 +28,7 @@ public class ServiceProduit {
             String requete = "INSERT INTO produit (nom,quantity,price,description,image,solde,active,referance,updated_at) VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
 
-            Date date = Calendar.getInstance().getTime();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-            String strDate = dateFormat.format(date);
-
+            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
             pst.setString(1, p.getNom());
             pst.setInt(2, p.getQuantity());
@@ -43,14 +38,13 @@ public class ServiceProduit {
             pst.setFloat(6, p.getSolde());
             pst.setBoolean(7, p.isActive());
             pst.setString(8, p.getReferance());
-            pst.setString(9, strDate);
+            pst.setDate(9, date);
 
             pst.executeUpdate();
             System.out.println(p);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-
     }
 
     /* ----------------- Read ----------------- */
@@ -76,7 +70,6 @@ public class ServiceProduit {
 
                 myList.add(prod);
             }
-
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
