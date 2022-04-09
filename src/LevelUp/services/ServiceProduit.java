@@ -76,11 +76,12 @@ public class ServiceProduit {
         return myList;
 
     }
+
     /* ----------------- Update ----------------- */
     public void editProduit(Produit p) throws SQLException {
         String requete = "UPDATE produit SET nom=?,quantity=? ,price=? ,description=?, image=?, solde=?, active=?,referance=?,updated_at=? WHERE id=?";
         try {
-            ste= cnx.prepareStatement(requete);
+            ste = cnx.prepareStatement(requete);
             ste.setInt(10, p.getId());
             ste.setString(1, p.getNom());
             ste.setInt(2, p.getQuantity());
@@ -95,7 +96,7 @@ public class ServiceProduit {
 
             ste.executeUpdate();
             System.out.println("Produit Modfié !");
-        } catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             System.out.println("Produit non Modfié !");
         }
