@@ -3,15 +3,7 @@ package Esprit.tests;
 import Esprit.Connection.MyConnection;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
-import java.util.Scanner;
-
 
 import Esprit.entities.Messages;
 import Esprit.entities.Panier;
@@ -29,8 +21,6 @@ public class ConnexionTest {
 
 
     public static void main(String[] args) throws SQLException {
-
-
         MyConnection mc = MyConnection.getInstance();
         Scanner sc = new Scanner(System.in);
         int choice = 100;
@@ -273,7 +263,7 @@ public class ConnexionTest {
                         String image = sc.nextLine();
                         System.out.println("y a-t-il un solde? :");
                         float solde = Float.parseFloat(sc.nextLine());
-                        System.out.println("Publié : Oui / Non");
+                        System.out.println("Publié : true / false");
                         boolean isActive = Boolean.parseBoolean(sc.nextLine());
                         System.out.println("Referance");
                         String ref = sc.nextLine();
@@ -338,7 +328,7 @@ public class ConnexionTest {
                                             "\tx" + order.getQuantite());
                                 }
                             }
-                            continue; // We are done with this iteration - start over
+                            break; // We are done with this iteration - start over
 
                         case 2:
                             System.out.println("What product would you like to remove?");
