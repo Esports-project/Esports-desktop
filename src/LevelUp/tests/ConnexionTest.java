@@ -14,9 +14,11 @@ import java.time.LocalDateTime;
 import Esprit.entities.Messages;
 import Esprit.entities.Produit;
 import Esprit.entities.Reclamation;
+import Esprit.entities.User;
 import Esprit.services.ServiceMessage;
 import Esprit.services.ServiceProduit;
 import Esprit.services.ServiceReclamation;
+import Esprit.services.ServiceUser;
 
 /**
  * @author Rayen BOURGUIBA
@@ -34,6 +36,7 @@ public class ConnexionTest {
         while (choice != 0) {
             System.out.println("1- Gestion Produits et Commandes :");
             System.out.println("2- Gestion Reclamation et Messages :");
+            System.out.println("3- Gestion Utilisateurs et Departements :");
             System.out.println("******************************************");
             System.out.println("pour quitter taper 0 :");
             System.out.println("******************************************");
@@ -41,6 +44,7 @@ public class ConnexionTest {
             switch (choice){
                 case 1: productCommand(); break;
                 case 2: reclamationMessage(); break;
+                case 3: UserDepartement(); break;
                 default: break;
             }
 
@@ -188,6 +192,94 @@ public class ConnexionTest {
 
                             Messages ms = new Messages(x);
                             message.deleteMessage(ms);
+                            break;
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    static void UserDepartement() throws SQLException  {
+
+        ServiceUser user = new ServiceUser();
+        //ServiceMessage message = new ServiceMessage();
+        Scanner sc = new Scanner(System.in);
+        int choix = 100;
+        System.out.println("------- Gestion Utilisateur et Departement -------");
+        System.out.println("1- Utilisateurs :");
+        System.out.println("2- Departements :");
+        System.out.println("0- Return <- :");
+
+        choix = Integer.parseInt(sc.nextLine());
+        while (choix != 0){
+            switch (choix) {
+                case 1: {
+                    System.out.println("------- Gestion Utilisateur -------");
+                    System.out.println("1- Create Utilisateur :");
+                    System.out.println("2- Read Utilisateur :");
+                    System.out.println("3- Update Utilisateur :");
+                    System.out.println("4- Delete Utilisateur :");
+                    System.out.println("5- Return <- :");
+                    choix = Integer.parseInt(sc.nextLine());
+
+                    switch (choix) {
+                        case 1:
+                            java.util.Date date_join = new java.util.Date();
+                            int banned = 0;
+                            String roles = "test";
+                            System.out.println("*** Create Utilisateur ***");
+                            System.out.println("Nom:");
+                            String nom = sc.nextLine();
+                            System.out.println("Prenom:");
+                            String prenom = sc.nextLine();
+                            System.out.println("Email:");
+                            String email = sc.nextLine();
+                            System.out.println("Phone:");
+                            int phone = Integer.parseInt(sc.nextLine());
+                            System.out.println("Username:");
+                            String username = sc.nextLine();
+                            System.out.println("Password:");
+                            String password = sc.nextLine();
+
+                            User u = new User(nom, prenom, email, phone, date_join, password, username, banned, roles);
+                            user.addUser(u);
+                            System.out.println(u);
+                            break;
+
+                        case 2:
+                            System.out.println("*** Read All Users ***");
+                            user.userList().forEach(e->System.out.println(e));
+                            break;
+
+                        case 3:
+                            System.out.println("*** Update User ***");
+                            System.out.println("ID of user to edit :");
+                            Integer y = Integer.parseInt(sc.nextLine());
+                            System.out.println("Nom");
+                            nom = sc.nextLine();
+                            System.out.println("Prenom:");
+                            prenom = sc.nextLine();
+                            System.out.println("Email:");
+                            email = sc.nextLine();
+                            System.out.println("Phone:");
+                            phone = Integer.parseInt(sc.nextLine());
+                            System.out.println("Username:");
+                            username = sc.nextLine();
+                            System.out.println("Password:");
+                            password = sc.nextLine();
+
+                            User u2= new User (y,nom,prenom, email,phone,password,username );
+                            user.editUser(u2);
+                            System.out.println(u2);
+                            break;
+                        case 4:
+                            System.out.println("*** Delete User ***");
+                            System.out.println("ID of user to delete :");
+                            Integer x = Integer.parseInt(sc.nextLine());
+
+                            User user1 = new User(x);
+                            user.deleteUser(user1);
                             break;
                     }
                     break;
