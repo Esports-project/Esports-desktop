@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.homePage.HomeController">
+   <children>
+      <ImageView fitHeight="428.0" fitWidth="719.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/3810460.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="-1.0" layoutY="-2.0" prefHeight="404.0" prefWidth="613.0" style="-fx-background-color: rgba(0,0,05,0.5);">
+         <children>
+            <AnchorPane prefHeight="417.0" prefWidth="123.0" style="-fx-background-color: rgba(0,0,05,0.7);">
+               <children>
+                  <AnchorPane layoutY="133.0" prefHeight="21.0" prefWidth="24.0" style="-fx-background-color: grey; -fx-padding: 5;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="7.0" text="RECLAMATION" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="83.0" prefHeight="21.0" prefWidth="24.0" style="-fx-background-color: grey; -fx-padding: 5;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="7.0" prefHeight="21.0" prefWidth="108.0" text="EVENEMENTS" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="182.0" prefHeight="21.0" prefWidth="123.0" style="-fx-background-color: grey; -fx-padding: 5;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="9.0" prefHeight="21.0" prefWidth="108.0" text="BLOG" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <StackPane layoutX="123.0" prefHeight="404.0" prefWidth="490.0">
+               <children>
+                  <Pane prefHeight="220.0" prefWidth="295.0">
+                     <children>
+                        <AnchorPane prefHeight="40.0" prefWidth="489.0" style="-fx-background-color: rgba(0,0,05,0.7); -fx-padding: 5;">
+                           <children>
+                              <Label layoutX="89.0" prefHeight="47.0" prefWidth="312.0" text="Signaler un problème" textFill="WHITE">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <TextArea layoutX="26.0" layoutY="132.0" prefHeight="224.0" prefWidth="280.0" promptText="Décrivez votre problème" />
+                        <TextField layoutX="26.0" layoutY="84.0" prefHeight="38.0" prefWidth="437.0" promptText="Subject" />
+                        <ChoiceBox layoutX="313.0" layoutY="131.0" prefWidth="150.0" />
+                        <AnchorPane layoutX="313.0" layoutY="315.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,05,0.7); -fx-padding: 5;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="10.0" prefHeight="21.0" prefWidth="131.0" text="MESSAGE DIRECT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="313.0" layoutY="269.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,05,0.7); -fx-padding: 5;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="10.0" prefHeight="21.0" prefWidth="131.0" text="ENVOYER PAR MAIL" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
