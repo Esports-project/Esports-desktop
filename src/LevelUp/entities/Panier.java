@@ -40,5 +40,4 @@ public class Panier {
                 ", quantite=" + quantite +
                 '}';
     }
-
 }
