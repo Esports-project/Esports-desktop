@@ -5,23 +5,23 @@ import Esprit.Connection.MyConnection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-<<<<<<< HEAD:src/LevelUp/Connection/ConnexionTest.java
+
 import Esprit.Entities.Messages;
 import Esprit.Entities.Produit;
 import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceMessage;
 import Esprit.Services.ServiceProduit;
 import Esprit.Services.ServiceReclamation;
-=======
-import Esprit.entities.Messages;
-import Esprit.entities.Produit;
-import Esprit.entities.Reclamation;
+
+import Esprit.Entities.Messages;
+import Esprit.Entities.Produit;
+import Esprit.Entities.Reclamation;
 import Esprit.entities.User;
-import Esprit.services.ServiceMessage;
-import Esprit.services.ServiceProduit;
-import Esprit.services.ServiceReclamation;
-import Esprit.services.ServiceUser;
->>>>>>> 368a2e034fafba3731383276a91c2ba7f204070f:src/LevelUp/tests/ConnexionTest.java
+import Esprit.Services.ServiceMessage;
+import Esprit.Services.ServiceProduit;
+import Esprit.Services.ServiceReclamation;
+import Esprit.Services.ServiceUser;
+
 
 /**
  * @author Rayen BOURGUIBA

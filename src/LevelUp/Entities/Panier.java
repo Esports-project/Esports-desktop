@@ -1,4 +1,4 @@
-package Esprit.entities;
+package Esprit.Entities;
 
 public class Panier {
 }
