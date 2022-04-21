@@ -49,3 +49,7 @@
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 30;
 }
+
+.fruitImg{
+    -fx-padding: 10;
+}

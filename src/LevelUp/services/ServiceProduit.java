@@ -4,14 +4,9 @@ import Esprit.Connection.MyConnection;
 import Esprit.entities.Produit;
 
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import javafx.beans.property.SimpleStringProperty;
-import java.util.Date;
 
 public class ServiceProduit {
     private Connection cnx;
@@ -123,6 +118,32 @@ public class ServiceProduit {
             Produit p = new Produit();
             PreparedStatement myStmt = cnx.prepareStatement("SELECT * from produit where id=?");
             myStmt.setInt(1, id);
+            ResultSet myRes = myStmt.executeQuery();
+            while (myRes.next()) {
+                p.setId(myRes.getInt("id"));
+                p.setNom(myRes.getString("nom"));
+                p.setQuantity(myRes.getInt("quantity"));
+                p.setPrice(myRes.getFloat("price"));
+                p.setDescription(myRes.getString("description"));
+                p.setImage(myRes.getString("image"));
+                p.setSolde(myRes.getFloat("solde"));
+                p.setActive(myRes.getBoolean("active"));
+                p.setReferance(myRes.getString("referance"));
+                p.setUpdatedAt(myRes.getDate("updated_at"));
+                return p;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /* ----------------- Search ID ----------------- */
+    public Produit getProduitByRef(String ref){
+        try {
+            Produit p = new Produit();
+            PreparedStatement myStmt = cnx.prepareStatement("SELECT * from produit where referance=?");
+            myStmt.setString(1, ref);
             ResultSet myRes = myStmt.executeQuery();
             while (myRes.next()) {
                 p.setId(myRes.getInt("id"));
