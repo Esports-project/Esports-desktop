@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.homeScreen.HomeController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="191.0" style="-fx-background-color: #070F23;">
+         <children>
+            <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="blogBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="eventsBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Events" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="storeBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="rankingBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Ranking" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="reclamationBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Reclamation" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="dashBoardBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <StackPane layoutX="191.0" prefHeight="600.0" prefWidth="609.0">
+         <children>
+            <AnchorPane fx:id="reclamationPane" style="-fx-background-color: black;" />
+            <Pane fx:id="homePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
+               <children>
+                  <ImageView fitHeight="600.0" fitWidth="657.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+                     <image>
+                        <Image url="@../../Resources/background.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="14.0" layoutY="24.0" text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <AnchorPane fx:id="rankingPane" style="-fx-background-color: black;" />
+            <AnchorPane fx:id="eventPane" style="-fx-background-color: black;" />
+            <AnchorPane fx:id="blogPane" style="-fx-background-color: black;" />
+            <AnchorPane fx:id="storePane" style="-fx-background-color: black;" />
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

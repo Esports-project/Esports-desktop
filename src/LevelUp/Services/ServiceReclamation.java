@@ -18,6 +18,8 @@ public class ServiceReclamation {
         cnx = MyConnection.getInstance().getConnection();
     }
 
+
+
     /* ----------------- Create ----------------- */
     public void addReclamation(Reclamation r) {
         try {
@@ -32,7 +34,7 @@ public class ServiceReclamation {
             pst.setString(4, r.getDescription());
             pst.setDate(5, date);
             pst.setInt(6,0);
-            pst.setInt(7,0);
+            pst.setInt(7,r.getCategory_id());
 
             pst.executeUpdate();
             System.out.println(r);
