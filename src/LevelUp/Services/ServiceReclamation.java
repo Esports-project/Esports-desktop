@@ -11,8 +11,7 @@ import java.util.List;
 public class ServiceReclamation {
     private Connection cnx;
     private PreparedStatement ste;
-    Statement st;
-    ResultSet rs;
+
 
     public ServiceReclamation() {
         cnx = MyConnection.getInstance().getConnection();
@@ -71,7 +70,7 @@ public class ServiceReclamation {
     }
 
     /* ----------------- Update ----------------- */
-    public void editReclamation(Reclamation r) throws SQLException {
+    public void editReclamation(Reclamation r)  {
         String requete = "UPDATE reclamation SET user_id=?, sujet=? ,email=? ,description=?, status=?, category_id=? WHERE id=?";
         try {
             ste = cnx.prepareStatement(requete);

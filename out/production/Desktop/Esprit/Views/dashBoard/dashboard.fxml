@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -12,6 +14,7 @@
       <Pane prefHeight="400.0" prefWidth="129.0" style="-fx-background-color: black;">
          <children>
             <Button fx:id="reclamationBtn" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Reclamation" />
+            <Button fx:id="reclamationBtn1" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Evenements" />
          </children>
       </Pane>
       <Pane layoutX="129.0" prefHeight="52.0" prefWidth="651.0" style="-fx-background-color: black;">
@@ -24,7 +27,8 @@
          </children></Pane>
       <StackPane fx:id="pane" layoutX="129.0" layoutY="52.0" prefHeight="348.0" prefWidth="651.0">
          <children>
-            <AnchorPane fx:id="recPane" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="recPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <AnchorPane fx:id="eventPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
          </children></StackPane>
    </children>
 </AnchorPane>

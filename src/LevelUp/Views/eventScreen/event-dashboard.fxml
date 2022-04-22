@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.eventScreen.EventDashboardController">
+   <children>
+      <HBox prefHeight="348.0" prefWidth="651.0">
+         <children>
+            <ScrollPane prefHeight="348.0" prefWidth="509.0">
+               <content>
+                  <VBox fx:id="eventList" prefHeight="348.0" prefWidth="510.0" />
+               </content>
+            </ScrollPane>
+            <VBox prefHeight="348.0" prefWidth="141.0">
+               <children>
+                  <Label text="Nom:" />
+                  <TextField fx:id="nom">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Description:" />
+                  <TextArea fx:id="description" prefHeight="106.0" prefWidth="141.0" />
+                  <Label text="Organisateur:" />
+                  <TextField fx:id="organisateur" />
+                  <DatePicker fx:id="datePicker">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Button fx:id="filepicker" mnemonicParsing="false" onAction="#ajoutImage" prefHeight="25.0" prefWidth="163.0" text="Fichier">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Button mnemonicParsing="false" onAction="#ajoutEvenement" prefHeight="30.0" prefWidth="141.0" text="Ajout evenement" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

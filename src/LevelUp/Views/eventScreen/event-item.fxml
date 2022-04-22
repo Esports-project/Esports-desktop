@@ -12,7 +12,7 @@
    <children>
       <HBox prefHeight="19.0" prefWidth="599.0" style="-fx-background-color: rgba(255, 255, 255, 0.4);">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="183.0" opacity="0.7" pickOnBounds="true">
+            <ImageView fx:id="imageView" fitHeight="80.0" fitWidth="183.0" opacity="0.7" pickOnBounds="true">
                <image>
                   <Image url="@../../Resources/3810460.jpg" />
                </image>

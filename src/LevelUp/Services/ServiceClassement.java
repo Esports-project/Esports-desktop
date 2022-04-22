@@ -1,6 +1,7 @@
 package Esprit.Services;
 
 
+import Esprit.Connection.MyConnection;
 import Esprit.Entities.Classement;
 import java.sql.*;
 import java.util.ArrayList;
@@ -67,10 +68,10 @@ public class ServiceClassement {
 
     public List<Classement> readClassements() {
         ArrayList<Classement> classements = new ArrayList();
-
+        String req = "SELECT * FROM classement";
         try {
-            Statement st = cnx.createStatement();
-            String req = "SELECT * FROM classement";
+            Statement st ;
+            st = MyConnection.getInstance().getConnection().prepareStatement(req);
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {

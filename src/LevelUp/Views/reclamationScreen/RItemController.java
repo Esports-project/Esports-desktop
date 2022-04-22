@@ -8,16 +8,16 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.TextArea;
 
 
 public class RItemController {
 
     @FXML
-    private Label title;
+    private TextArea title;
 
     @FXML
-    private Label content;
+    private TextArea content;
 
     @FXML
     private Button edit;
@@ -30,18 +30,36 @@ public class RItemController {
 
     private Reclamation rec;
 
+    private int index;
+
 
     public void deleteReclamation(ActionEvent e){
         ServiceReclamation sr = new ServiceReclamation();
         sr.deleteReclamation(rec);
-        System.out.println("sdfs");
         RDashboardController rd = new RDashboardController();
+    }
 
+    public void editReclamation(ActionEvent e){
+        title.getText();
+        content.getText();
+        ServiceReclamation sr = new ServiceReclamation();
+        Reclamation r = new Reclamation(
+                rec.getId(),
+                rec.getUser_id(),
+                title.getText(),
+                rec.getEmail(),
+                content.getText(),
+                rec.getDate(),
+                rec.getStatus(),
+                rec.getCategory_id()
+        );
+        sr.editReclamation(r);
     }
     public void setData(Reclamation r){
         title.setText(r.getSubject());
         content.setText(r.getDescription());
         rec = r;
+
     }
 
 }

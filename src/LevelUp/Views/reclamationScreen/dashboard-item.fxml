@@ -19,13 +19,13 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="title" alignment="TOP_LEFT" />
+                  <TextArea fx:id="title" prefHeight="30.0" prefWidth="622.0" />
                   <Label text="Content:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="content" alignment="TOP_LEFT" />
+                  <TextArea fx:id="content" prefHeight="87.0" prefWidth="622.0" />
                   <HBox prefHeight="13.0" prefWidth="622.0">
                      <children>
                         <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteReclamation" text="Delete">
@@ -36,7 +36,7 @@
                               <Insets left="450.0" right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="edit" mnemonicParsing="false" text="Edit">
+                        <Button fx:id="edit" mnemonicParsing="false" onAction="#editReclamation" text="Edit">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>

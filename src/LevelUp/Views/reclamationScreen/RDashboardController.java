@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
 import Esprit.Services.ServiceReclamation;
 import javafx.scene.control.Button;

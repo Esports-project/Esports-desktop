@@ -68,12 +68,16 @@ public class Classement {
     }
 
 
-
-
-
     @Override
     public String toString() {
-        return "Classement{" + "id=" + id + ", Rang=" + rang + ", equipe_id=" + equipe_id + ", evenement_id=" + evenement_id + '}';
+        return "classement{" +
+                "id=" + id +
+                ", rang='" + rang + '\'' +
+                ", equipe_id=" + equipe_id +
+                ", evenement_id=" + evenement_id +
+                '}';
     }
+
+
 
 }
