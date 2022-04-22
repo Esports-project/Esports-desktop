@@ -46,6 +46,9 @@ public class HomeController implements Initializable {
     private AnchorPane reclamationPane;
 
     @FXML
+    private AnchorPane userPane;
+
+    @FXML
     private AnchorPane blogPane;
 
     @FXML
@@ -60,6 +63,11 @@ public class HomeController implements Initializable {
     @FXML
     private Pane homePane;
 
+    private Stage mStage;
+
+    public void setStage(Stage mStage) {
+        this.mStage = mStage;
+    }
 
 
     public void handleClicks(ActionEvent actionEvent) {

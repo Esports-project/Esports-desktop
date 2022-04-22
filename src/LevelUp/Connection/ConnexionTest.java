@@ -16,7 +16,7 @@ import Esprit.Services.ServiceReclamation;
 import Esprit.Entities.Messages;
 import Esprit.Entities.Produit;
 import Esprit.Entities.Reclamation;
-import Esprit.entities.User;
+import Esprit.Entities.User;
 import Esprit.Services.ServiceMessage;
 import Esprit.Services.ServiceProduit;
 import Esprit.Services.ServiceReclamation;

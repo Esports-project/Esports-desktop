@@ -21,13 +21,13 @@ public class DashboardController implements Initializable {
     private Button reclamationBtn;
 
     @FXML
-    private AnchorPane recPane;
+    private AnchorPane userPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            Parent x = FXMLLoader.load(getClass().getResource("../reclamationScreen/reclamation-dashboard.fxml"));
-            recPane.getChildren().add(x);
+            Parent x = FXMLLoader.load(getClass().getResource("../userScreen/user-dashboard.fxml"));
+            userPane.getChildren().add(x);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

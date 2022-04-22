@@ -1,9 +1,20 @@
 package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
-import Esprit.Entities.Produit;
-import Esprit.entities.User;
+import Esprit.Entities.User;
+import Esprit.HelloApplication;
+import Esprit.Views.homeScreen.HomeController;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,6 +25,62 @@ public class ServiceUser {
     private PreparedStatement ste;
     Statement st;
     ResultSet rs;
+
+    private Stage mStage;
+
+    @FXML
+    private TextField email;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Label messageField;
+
+    @FXML
+    private Button loginBtn;
+
+    public void setStage(Stage mStage) {
+        this.mStage = mStage;
+    }
+
+    public void loginButtonOnAction(javafx.event.ActionEvent actionEvent) throws IOException {
+        validateLogin();
+    }
+
+    public void validateLogin() {
+        MyConnection connectNow = new MyConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String verifyLogin = "SELECT count(1) FROM user WHERE email='" + email.getText() + "' AND password='" + passwordField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifyLogin);
+
+            while(queryResult.next()) {
+                if (queryResult.getInt(1) == 1) {
+                    messageField.setText("Congratulations!");
+                    FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Views/homeScreen/home-view.fxml"));
+                    Parent root;
+                    root = loader.load();
+                    HomeController dashboard = loader.getController();
+                    dashboard.setStage(mStage);
+
+                    mStage.setTitle("second scene");
+                    mStage.setScene(new Scene(root));
+                    mStage.show();
+                } else {
+                    messageField.setText("Invalid login. Please try again");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+
+    }
+
 
     public ServiceUser() {
         cnx = MyConnection.getInstance().getConnection();
@@ -111,4 +178,6 @@ public class ServiceUser {
             System.err.println(ex.getMessage());
         }
     }
+
+
 }
