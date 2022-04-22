@@ -2,7 +2,9 @@ package Esprit.entities;
 
 import Esprit.services.ServiceProduit;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ShoppingCart {
@@ -55,5 +57,17 @@ public class ShoppingCart {
             total=total+entryCost;
         }
         return total;
+    }
+
+    public int calculateNumber(){
+        int total=0;
+        for(CartEntry entry:entries.values()){
+            total++;
+        }
+        return total;
+    }
+
+    public List <CartEntry> getEntries(){
+        return new ArrayList<>(entries.values());
     }
 }

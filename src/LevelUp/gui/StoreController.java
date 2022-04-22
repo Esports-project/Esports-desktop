@@ -12,15 +12,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,7 +33,16 @@ import java.util.ResourceBundle;
 public class StoreController implements Initializable{
 
     @FXML
+    private Button dashboard;
+
+    @FXML
     private Button addToCart;
+
+    @FXML
+    private BorderPane Panier;
+
+    @FXML
+    private BorderPane Store;
 
     @FXML
     private VBox chosenFruitCard;
@@ -49,6 +58,12 @@ public class StoreController implements Initializable{
 
     @FXML
     private GridPane grid;
+
+    @FXML
+    private Button accessProd;
+
+    @FXML
+    private Button PanierBoutton;
 
     @FXML
     private Label quantityProd;
@@ -74,6 +89,12 @@ public class StoreController implements Initializable{
         return produits;
     }
 
+    public void handleClicks(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == GotTocart) {
+            Panier.toFront();
+        }
+    }
+
     private void setChosenFruit(Produit produit) {
         fruitNameLable.setText(produit.getNom());
         fruitPriceLabel.setText("TND " + produit.getPrice());
@@ -88,7 +109,6 @@ public class StoreController implements Initializable{
         fruitImg.setImage(img6);
         fruitImg.setStyle("-fx-background-radius: 15;");
         chosenFruitCard.setStyle("-fx-background-radius: 30;");
-        Button addToCart = new Button("Add To Cart");
         addToCart.setUserData(produit.getReferance());
         addToCart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -149,8 +169,20 @@ public class StoreController implements Initializable{
 
     @FXML
     private void loadSecond(ActionEvent actionEvent) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("cart.fxml"));
-        rootPane.getChildren().setAll(pane);
+        rootPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("cart.fxml")));
     }
+
+    @FXML void ajoutPanier(ActionEvent actionEvent) throws IOException{
+        Node sourceComponent = (Node)actionEvent.getSource();
+        String productRef = (String)sourceComponent.getUserData();
+        ShoppingCart shoppingCart = ShoppingCart.getInstance();
+        shoppingCart.addProduct(productRef);
+    }
+
+    @FXML
+    private void loadDashboard(ActionEvent actionEvent) throws IOException {
+        rootPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("DashboardProduit.fxml")));
+    }
+
 
 }

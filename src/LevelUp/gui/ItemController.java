@@ -34,6 +34,7 @@ public class ItemController {
     public void setData(Produit produit, MyListener myListener) {
         this.produit = produit;
         this.myListener = myListener;
+        priceLable.setText(produit.getPrice()+"$");
         nameLabel.setText(produit.getNom());
         String pat = "C:\\Users\\Rayen BOURGUIBA\\Desktop\\Last\\src\\LevelUp\\img\\" + produit.getImage();
         Image img6 = null;
@@ -45,7 +46,6 @@ public class ItemController {
         img.setImage(img6);
         img.setStyle("-fx-background-radius: 15;");
 
-        //Image image = new Image(getClass().getResourceAsStream(produit.getImage()));
-        //img.setImage(image);
     }
+
 }

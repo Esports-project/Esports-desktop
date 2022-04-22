@@ -2,6 +2,8 @@ package Esprit.services;
 
 import Esprit.Connection.MyConnection;
 import Esprit.entities.Produit;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.Calendar;
@@ -44,8 +46,8 @@ public class ServiceProduit {
     }
 
     /* ----------------- Read ----------------- */
-    public List<Produit> produitList() {
-        List<Produit> myList = new ArrayList<Produit>();
+    public ObservableList<Produit> produitList() {
+        ObservableList<Produit> myList = FXCollections.observableArrayList();
         String requete = "SELECT * from Produit";
         try {
             Statement st;

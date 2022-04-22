@@ -53,3 +53,8 @@
 .fruitImg{
     -fx-padding: 10;
 }
+
+.PasserCommande{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
