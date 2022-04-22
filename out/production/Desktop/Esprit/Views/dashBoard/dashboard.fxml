@@ -14,7 +14,8 @@
       <Pane prefHeight="400.0" prefWidth="129.0" style="-fx-background-color: black;">
          <children>
             <Button fx:id="reclamationBtn" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Reclamation" />
-            <Button fx:id="reclamationBtn1" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Evenements" />
+            <Button fx:id="eventBtn" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Evenements" />
+            <Button fx:id="eventBtn1" layoutX="10.0" layoutY="131.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Ranking" />
          </children>
       </Pane>
       <Pane layoutX="129.0" prefHeight="52.0" prefWidth="651.0" style="-fx-background-color: black;">
@@ -29,6 +30,7 @@
          <children>
             <AnchorPane fx:id="recPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
             <AnchorPane fx:id="eventPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <AnchorPane fx:id="rankingPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
          </children></StackPane>
    </children>
 </AnchorPane>

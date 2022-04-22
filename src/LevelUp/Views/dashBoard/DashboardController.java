@@ -21,10 +21,18 @@ public class DashboardController implements Initializable {
     private Button reclamationBtn;
 
     @FXML
+    private Button eventBtn;
+
+
+
+    @FXML
     private AnchorPane recPane;
 
     @FXML
     private AnchorPane eventPane;
+
+    @FXML
+    private AnchorPane rankingPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

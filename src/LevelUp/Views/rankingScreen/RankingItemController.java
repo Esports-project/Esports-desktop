@@ -19,12 +19,9 @@ public class RankingItemController {
 
 
     public void setData(Classement cls ){
-
     rank.setText(String.valueOf(cls.getId()));
     eventname.setText(String.valueOf(cls.getEvenement_id()));
     teamname.setText(String.valueOf(cls.getEquipe_id()));
-
-
     }
 
 }

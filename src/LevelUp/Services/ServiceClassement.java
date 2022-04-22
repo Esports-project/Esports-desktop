@@ -76,7 +76,7 @@ public class ServiceClassement {
 
             while (rs.next()) {
 
-                classements.add(new Classement(rs.getInt("id"), rs.getInt("rang"), rs.getInt("equipe_id"), rs.getInt("evenement_id")));
+                classements.add(new Classement(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
 
             }
 
