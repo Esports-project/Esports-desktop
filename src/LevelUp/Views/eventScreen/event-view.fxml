@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="eventPane" prefHeight="600.0" prefWidth="609.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="600.0" prefWidth="609.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.eventScreen.EventController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="657.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
          <image>
@@ -22,7 +22,7 @@
       </Label>
       <ScrollPane layoutX="4.0" layoutY="78.0" prefHeight="514.0" prefWidth="601.0" style="-fx-background-color: transparent;" stylesheets="@../../Resources/stylesheet.css">
          <content>
-            <VBox prefHeight="510.0" prefWidth="599.0" />
+            <VBox fx:id="eventList" prefHeight="510.0" prefWidth="599.0" />
          </content>
       </ScrollPane>
    </children>

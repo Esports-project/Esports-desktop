@@ -8,27 +8,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="19.0" prefWidth="599.0" style="-fx-background-color: rgba(255, 255, 255, 0.4);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="80.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.eventScreen.ItemController">
    <children>
-      <ImageView fitHeight="80.0" fitWidth="183.0" opacity="0.7" pickOnBounds="true">
-         <image>
-            <Image url="@../../Resources/3810460.jpg" />
-         </image>
-      </ImageView>
-      <VBox prefHeight="80.0" prefWidth="344.0">
+      <HBox prefHeight="19.0" prefWidth="599.0" style="-fx-background-color: rgba(255, 255, 255, 0.4);">
          <children>
-            <Label prefHeight="37.0" prefWidth="300.0" text="Label" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="37.0" prefWidth="310.0" text="Date" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="80.0" fitWidth="183.0" opacity="0.7" pickOnBounds="true">
+               <image>
+                  <Image url="@../../Resources/3810460.jpg" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="80.0" prefWidth="344.0">
+               <children>
+                  <Label fx:id="title" prefHeight="37.0" prefWidth="300.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date" prefHeight="37.0" prefWidth="310.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
-      </VBox>
-      <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="52.0" style="-fx-background-color: black;" text="Join" textFill="WHITE" />
+      </HBox>
    </children>
-</HBox>
+</AnchorPane>

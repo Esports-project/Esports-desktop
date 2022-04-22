@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.reclamationScreen.RDashboardController">
+   <children>
+      <ScrollPane prefHeight="342.0" prefWidth="643.0">
+         <content>
+            <VBox fx:id="recList" prefHeight="336.0" prefWidth="636.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
