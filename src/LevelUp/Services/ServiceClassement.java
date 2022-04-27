@@ -10,6 +10,12 @@ import java.util.List;
 
 public class ServiceClassement {
     private Connection cnx;
+    private PreparedStatement ste;
+
+
+    public ServiceClassement() {
+        cnx = MyConnection.getInstance().getConnection();
+    }
 
     public void createClassement(Classement C) {
 
@@ -35,14 +41,15 @@ public class ServiceClassement {
         try {
 
             String sql = "UPDATE classement SET rang=?, equipe_id=?, evenement_id=? WHERE id=?";
+            ste = cnx.prepareStatement(sql);
 
-            PreparedStatement st = cnx.prepareStatement(sql);
-            st.setInt(1, C.getRang());
-            st.setInt(2, C.getEquipe_id());
-            st.setInt(3, C.getEvenement_id());
-            st.setInt(4, C.getId());
 
-            st.executeUpdate();
+            ste.setInt(1, C.getRang());
+            ste.setInt(2, C.getEquipe_id());
+            ste.setInt(3, C.getEvenement_id());
+            ste.setInt(4, C.getId());
+
+            ste.executeUpdate();
             System.out.println("modification avec succees !");
 
         } catch (SQLException ex) {
@@ -67,13 +74,13 @@ public class ServiceClassement {
     }
 
     public List<Classement> readClassements() {
-        ArrayList<Classement> classements = new ArrayList();
+        List<Classement> classements = new ArrayList<Classement>();
         String req = "SELECT * FROM classement";
         try {
-            Statement st ;
-            st = MyConnection.getInstance().getConnection().prepareStatement(req);
-            ResultSet rs = st.executeQuery(req);
+            Statement st;
 
+            st= MyConnection.getInstance().getConnection().prepareStatement(req);
+            ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
 
                 classements.add(new Classement(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));

@@ -2,6 +2,8 @@ package Esprit.Views.rankingScreen;
 
 import Esprit.Entities.Classement;
 
+import Esprit.Services.ServiceClassement;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -26,5 +28,24 @@ public class RDashboardItem {
 
     }
 
+
+    public void modifyClassement(ActionEvent e){
+        ServiceClassement sc = new ServiceClassement();
+        Classement c = new Classement(
+                classement.getId(),
+                Integer.parseInt(rank.getText()) ,
+                Integer.parseInt(event.getText()) ,
+                Integer.parseInt(equipe.getText())
+        );
+
+        sc.modifyClassement(c);
+    }
+
+
+    public void deleteClassement(ActionEvent e){
+        ServiceClassement sc = new ServiceClassement();
+
+        sc.DeleteClassement(classement.getId());
+    }
 
 }

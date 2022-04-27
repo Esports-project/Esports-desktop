@@ -1,5 +1,6 @@
 package Esprit.Views.dashBoard;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +24,9 @@ public class DashboardController implements Initializable {
     @FXML
     private Button eventBtn;
 
+    @FXML
+    private Button rankingBtn;
+
 
 
     @FXML
@@ -42,8 +46,24 @@ public class DashboardController implements Initializable {
 
             Parent eventpage = FXMLLoader.load(getClass().getResource("../eventScreen/event-dashboard.fxml"));
             eventPane.getChildren().add(eventpage);
+
+            Parent rankingpage = FXMLLoader.load(getClass().getResource("../rankingScreen/ranking-dashboard.fxml"));
+            rankingPane.getChildren().add(rankingpage);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void handleClicks(ActionEvent e){
+        if(e.getSource() == eventBtn){
+            eventPane.toFront();
+        }
+        if(e.getSource() == reclamationBtn){
+            recPane.toFront();
+        }
+        if(e.getSource() == rankingBtn ){
+            rankingPane.toFront();
         }
     }
 }

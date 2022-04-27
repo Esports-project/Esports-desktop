@@ -1,8 +1,13 @@
 package Esprit.Views.rankingScreen;
 
+import Esprit.Entities.Classement;
+import Esprit.Entities.Evenement;
 import Esprit.Services.ServiceClassement;
+import Esprit.Services.ServiceEvenements;
 import Esprit.Services.ServiceReclamation;
+import Esprit.Views.eventScreen.DashboardItemController;
 import Esprit.Views.reclamationScreen.RItemController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +18,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class RankingDashboardController implements Initializable {
@@ -32,20 +38,21 @@ public class RankingDashboardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        ServiceClassement sr = new ServiceClassement();
-        sr.readClassements().forEach(classement -> {
+        ServiceClassement se = new ServiceClassement();
+        se.readClassements().forEach(x -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("ranking-item.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("ranking-dashboardItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-                RankingItemController itemController = fxmlLoader.getController();
-                itemController.setData(classement);
+                RDashboardItem itemController = fxmlLoader.getController();
+                itemController.setData(x);
                 classmentList.getChildren().add(anchorPane);
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
     }
+
+
 
 }

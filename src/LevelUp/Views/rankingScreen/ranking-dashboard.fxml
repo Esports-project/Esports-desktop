@@ -29,7 +29,7 @@
                   <Label text="Evenement" />
                   <ComboBox fx:id="evenement" prefWidth="150.0" />
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <Button mnemonicParsing="false" onAction="#ajoutEvenement" prefHeight="30.0" prefWidth="141.0" text="Ajout classement" />
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" text="Ajout classement" />
                </children>
             </VBox>
          </children>
