@@ -25,7 +25,7 @@ public class ServiceLigneCommande {
 
             pst.setInt(1, lc.getIdProduit());
             pst.setInt(2, lc.getQuantite());
-            pst.setFloat(3, lc.getIdCommande());
+            pst.setInt(3, lc.getIdCommande());
 
             pst.executeUpdate();
             System.out.println(lc);

@@ -38,7 +38,7 @@ public class ShoppingCart {
     public void removeProduct(String referance) {
         CartEntry productEntry = entries.get(referance);
         if (productEntry != null) {
-            productEntry.decreaseQuantity();
+            entries.clear();
         }
     }
 

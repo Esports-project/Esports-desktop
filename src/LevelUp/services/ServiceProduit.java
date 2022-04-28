@@ -165,4 +165,18 @@ public class ServiceProduit {
         }
         return null;
     }
+
+    public void reduceQuantityComm(Produit prod, int qte) throws SQLException {
+        String requete = "UPDATE produit SET quantity=? WHERE referance=?";
+        try {
+            ste = cnx.prepareStatement(requete);
+            ste.setInt(1, prod.getQuantity()-qte);
+            ste.setString(2, prod.getReferance());
+            ste.executeUpdate();
+            System.out.println("Produit Modfié !");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            System.out.println("Produit non Modfié !");
+        }
+    }
 }

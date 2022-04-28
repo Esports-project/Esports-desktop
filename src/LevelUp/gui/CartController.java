@@ -139,8 +139,9 @@ public class CartController {
         }
 
     @FXML
-    void passerCommande(ActionEvent event) {
+    void passerCommande(ActionEvent event) throws IOException {
         ServiceCommande serviceCommande = new ServiceCommande();
-        serviceCommande.addCommande(cartEntry);
+        serviceCommande.addCommande();
+        rootPannel.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("Store.fxml")));
     }
 }

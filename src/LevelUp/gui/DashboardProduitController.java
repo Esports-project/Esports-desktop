@@ -2,8 +2,8 @@ package Esprit.gui;
 
 import Esprit.Connection.mysqlconnect;
 import Esprit.entities.Produit;
+import Esprit.services.ServiceCommande;
 import Esprit.services.ServiceProduit;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -68,7 +67,7 @@ public class DashboardProduitController {
     private TableColumn<Produit, String> colRef;
 
     @FXML
-    private TableColumn<?, ?> comSolde;
+    private TableColumn<Produit, Float> comSolde;
 
     @FXML
     private Button deleteProduit;
@@ -149,7 +148,7 @@ public class DashboardProduitController {
             String img = textImg.getText();
             float solde = Float.parseFloat(testSolde.getText());
             String ref = textRef.getText();
-            if (!(textNom.getText().trim().isEmpty()) && !(textDesc.getText().trim().isEmpty()) && !(textQuantity.getText().trim().isEmpty()) && !(tetPrice.getText().trim().isEmpty()) && !(textImg.getText().trim().isEmpty()) && !(testSolde.getText().trim().isEmpty()) && !(textRef.getText().trim().isEmpty()) && isFullname(nom) && isNumber(String.valueOf(quantity)) && isFullname(des) && isFloat(String.valueOf(price)) && isFloat(String.valueOf(solde)) && solde >0 && solde <99 && price >0){
+            //if (!(textNom.getText().trim().isEmpty()) && !(textDesc.getText().trim().isEmpty()) && !(textQuantity.getText().trim().isEmpty()) && !(tetPrice.getText().trim().isEmpty()) && !(textImg.getText().trim().isEmpty()) && !(testSolde.getText().trim().isEmpty()) && !(textRef.getText().trim().isEmpty()) && isFullname(nom) && isNumber(String.valueOf(quantity)) && isFullname(des) && isFloat(String.valueOf(price)) && isFloat(String.valueOf(solde)) && solde >0 && solde <99 && price >0){
             sr.addProduit(new Produit(
                     nom,
                     quantity,
@@ -160,7 +159,9 @@ public class DashboardProduitController {
                     active,
                     ref,
                     date)
-            );}else {
+            );
+            tabViewProd.setItems(listM);
+        /*}else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error alert");
                 alert.setHeaderText("Veiller entrer correctement les coordonnées");
@@ -171,7 +172,7 @@ public class DashboardProduitController {
 
                 alert.showAndWait();
 
-            }
+            }*/
 
         }
 
@@ -231,9 +232,17 @@ public class DashboardProduitController {
         colQuantity.setCellValueFactory(new PropertyValueFactory<Produit,Integer>("quantity"));
         colPrice.setCellValueFactory(new PropertyValueFactory<Produit,Float>("price"));
         colRef.setCellValueFactory(new PropertyValueFactory<Produit,String>("referance"));
+        comSolde.setCellValueFactory(new PropertyValueFactory<Produit,Float>("solde"));
 
         listM = mysqlconnect.getDatausers();
         tabViewProd.setItems(listM);
+    }
+
+    @FXML
+    public void editProd(){
+        ServiceProduit serviceProduit = new ServiceProduit();
+        Produit prod = tabViewProd.getSelectionModel().getSelectedItem();
+        serviceProduit.deleteProduit(prod);
     }
 
 

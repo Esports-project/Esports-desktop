@@ -52,7 +52,7 @@ public class CartItemController {
         this.myListener = myListener;
         nameLabelCart.setText(cart.getProduit().getNom());
         priceLableCart.setText(cart.getProduit().getPrice()+"$");
-        String pat = "C:\\Users\\Rayen BOURGUIBA\\Desktop\\Last\\src\\LevelUp\\img\\" + cart.getProduit().getImage();
+        String pat = "C:\\Users\\Rayen BOURGUIBA\\Desktop\\Esports-desktop-Rayen\\src\\LevelUp\\img\\" + cart.getProduit().getImage();
         Image img6 = null;
         try {
             img6 = new Image(new FileInputStream(pat));
@@ -65,7 +65,7 @@ public class CartItemController {
         priceItemCart.setText(String.valueOf(cart.getQuantity()*cart.getProduit().getPrice()));
         ButtonMinusCart.setUserData(cart.getProduit());
         ButtonMinusCart.setOnAction(e->{
-            if (cart.getProduit().getQuantity()>0 && cart.getQuantity()<cart.getProduit().getQuantity() && cart.getQuantity()>1){
+            if (cart.getProduit().getQuantity()>0 && cart.getQuantity()<=cart.getProduit().getQuantity() && cart.getQuantity()>1){
                 int num = cart.getQuantity() - 1;
             cart.setQuantity(num);
             quantityItemPrice.setText(String.valueOf(cart.getQuantity()));
@@ -73,7 +73,7 @@ public class CartItemController {
         });
         ButtonPlusCart.setUserData(cart.getProduit());
         ButtonPlusCart.setOnAction(e->{
-            if (cart.getProduit().getQuantity()>0 && cart.getQuantity()<cart.getProduit().getQuantity() && cart.getQuantity()>1){
+            if (cart.getProduit().getQuantity()>0 && cart.getQuantity()<cart.getProduit().getQuantity() && cart.getQuantity()>=1){
             int num = cart.getQuantity() + 1;
             cart.setQuantity(num);
             quantityItemPrice.setText(String.valueOf(cart.getQuantity()));

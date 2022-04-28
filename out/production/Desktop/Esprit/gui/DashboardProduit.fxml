@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.gui.DashboardProduitController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.gui.DashboardProduitController">
     <children>
         <BorderPane fx:id="Store" prefHeight="810.0" prefWidth="1315.0">
             <left>
@@ -166,10 +166,10 @@
                                  <children>
                                     <Button fx:id="reload" mnemonicParsing="false" onAction="#UpdateTable" prefHeight="25.0" prefWidth="156.0" text="Reload" />
                                     <Label prefHeight="17.0" prefWidth="80.0" />
-                                    <Button fx:id="deleteProduit" mnemonicParsing="false" onAction="#deleteProd" prefHeight="25.0" prefWidth="156.0" text="Delete" />
+                                    <Button fx:id="deleteProduit" mnemonicParsing="false" onAction="#deleteProd" prefHeight="25.0" prefWidth="156.0" text="Edit" />
                                     <Label prefHeight="17.0" prefWidth="80.0" />
                                     <Label />
-                                    <Button fx:id="editProduit" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Edit" />
+                                    <Button fx:id="editProduit" mnemonicParsing="false" onAction="#editProd" prefHeight="25.0" prefWidth="156.0" text="Delete" />
                                     <Label prefHeight="17.0" prefWidth="80.0" />
                                     <Button fx:id="accessCommande" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="&gt; Commandes" />
                                  </children>

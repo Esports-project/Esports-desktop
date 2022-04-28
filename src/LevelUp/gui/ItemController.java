@@ -36,7 +36,7 @@ public class ItemController {
         this.myListener = myListener;
         priceLable.setText(produit.getPrice()+"$");
         nameLabel.setText(produit.getNom());
-        String pat = "C:\\Users\\Rayen BOURGUIBA\\Desktop\\Last\\src\\LevelUp\\img\\" + produit.getImage();
+        String pat = "C:\\Users\\Rayen BOURGUIBA\\Desktop\\Esports-desktop-Rayen\\src\\LevelUp\\img\\" + produit.getImage();
         Image img6 = null;
         try {
             img6 = new Image(new FileInputStream(pat));
