@@ -1,4 +1,5 @@
-package Esprit.entities;
+package LevelUp.Entities;
+
 
 import java.util.Date;
 

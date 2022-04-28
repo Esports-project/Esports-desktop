@@ -1,4 +1,4 @@
-package Esprit.entities;
+package LevelUp.Entities;
 
 public class LigneCommande {
 
