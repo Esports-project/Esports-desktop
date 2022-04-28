@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,12 +18,14 @@ import javafx.scene.layout.BorderPane;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 import java.util.Calendar;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DashboardProduitController {
+public class DashboardProduitController implements Initializable {
 
     @FXML
     private ImageView GotTocart;
@@ -70,6 +73,9 @@ public class DashboardProduitController {
     private TableColumn<Produit, Float> comSolde;
 
     @FXML
+    private Button editer;
+
+    @FXML
     private Button deleteProduit;
 
     @FXML
@@ -115,6 +121,25 @@ public class DashboardProduitController {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        editer.setVisible(false);
+        UpdateTable();
+        editProduit.setOnAction(e -> {
+            Produit prod = tabViewProd.getSelectionModel().getSelectedItem();
+            editer.setVisible(true);
+            addProduitButton.setVisible(false);
+            textRef.setText(prod.getReferance());
+            textImg.setText(prod.getImage());
+            textQuantity.setText(String.valueOf(prod.getQuantity()));
+            textNom.setText(prod.getNom());
+            textDesc.setText(prod.getDescription());
+            tetPrice.setText(String.valueOf(prod.getPrice()));
+            testSolde.setText(String.valueOf(prod.getSolde()));
+            textActive.setSelected(true);
+        });
+    }
+
     public void deleteProd(ActionEvent e) {
         conn = mysqlconnect.ConnectDb();
         String sql = "delete from produit where referance = ?";
@@ -129,16 +154,9 @@ public class DashboardProduitController {
         }
     }
 
-    public void showProds(){
-        /*ServiceProduit serviceProduit = new ServiceProduit();
-        ObservableList<Produit> list = serviceProduit.produitList();
-        colNom.setCellFactory(new PropertyValueFactory<Produit, String>();
-*/
-    }
-
-    public void AddProd(ActionEvent actionEvent){
+    public void AddProd(ActionEvent actionEvent) {
         ServiceProduit sr = new ServiceProduit();
-        boolean active=true;
+        boolean active = true;
         if (actionEvent.getSource() == addProduitButton) {
             java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
             String nom = textNom.getText();
@@ -161,6 +179,7 @@ public class DashboardProduitController {
                     date)
             );
             tabViewProd.setItems(listM);
+            UpdateTable();
         /*}else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error alert");
@@ -175,7 +194,6 @@ public class DashboardProduitController {
             }*/
 
         }
-
     }
 
     @FXML
@@ -188,64 +206,100 @@ public class DashboardProduitController {
         return str.matches(expression);
     }
 
-    public static boolean isNumber(String s)
-    {
-
-        // The given argument to compile() method
-        // is regular expression. With the help of
-        // regular expression we can validate mobile
-        // number.
-        // The number should be of 10 digits.
-
-        // Creating a Pattern class object
+    public static boolean isNumber(String s) {
         Pattern p = Pattern.compile("^\\d{10}$");
-
-        // Pattern class contains matcher() method
-        // to find matching between given number
-        // and regular expression for which
-        // object of Matcher class is created
         Matcher m = p.matcher(s);
-
-        // Returning boolean value
         return (m.matches());
     }
 
-    public static boolean isFloat(String s){
-        if (s.matches("[-+]?[0-9]*\\.?[0-9]+")) { // You can use the `\\d` instead of `0-9` too!
+    public static boolean isFloat(String s) {
+        if (s.matches("[-+]?[0-9]*\\.?[0-9]+"))
+        {
             return true;
-        }else{return  false;}
+        } else {
+            return false;
+        }
     }
 
-
-    //affichage bl tall
     ObservableList<Produit> listM;
     int index1 = -1;
-
-    Connection conn =null;
+    Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
 
-    public void UpdateTable(){
-        colNom.setCellValueFactory(new PropertyValueFactory<Produit,String>("nom"));
-        colActive.setCellValueFactory(new PropertyValueFactory<Produit,String>("active"));
-        colImage.setCellValueFactory(new PropertyValueFactory<Produit,String>("image"));
-        colQuantity.setCellValueFactory(new PropertyValueFactory<Produit,Integer>("quantity"));
-        colPrice.setCellValueFactory(new PropertyValueFactory<Produit,Float>("price"));
-        colRef.setCellValueFactory(new PropertyValueFactory<Produit,String>("referance"));
-        comSolde.setCellValueFactory(new PropertyValueFactory<Produit,Float>("solde"));
-
+    public void UpdateTable() {
+        colNom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
+        colActive.setCellValueFactory(new PropertyValueFactory<Produit, String>("active"));
+        colImage.setCellValueFactory(new PropertyValueFactory<Produit, String>("image"));
+        colQuantity.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("quantity"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<Produit, Float>("price"));
+        colRef.setCellValueFactory(new PropertyValueFactory<Produit, String>("referance"));
+        comSolde.setCellValueFactory(new PropertyValueFactory<Produit, Float>("solde"));
         listM = mysqlconnect.getDatausers();
         tabViewProd.setItems(listM);
     }
 
     @FXML
-    public void editProd(){
+    public void editProd() {
+        addProduitButton.setVisible(false);
+    }
+
+    @FXML
+    public void editer(ActionEvent actionEvent) throws SQLException {
+        ServiceProduit serviceProduit = new ServiceProduit();
+        Produit prod = tabViewProd.getSelectionModel().getSelectedItem();
+        if (actionEvent.getSource() == editer) {
+            boolean active = true;
+            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            String nom = textNom.getText();
+            String des = textDesc.getText();
+            int quantity = Integer.parseInt(textQuantity.getText());
+            float price = Float.parseFloat(tetPrice.getText());
+            String img = textImg.getText();
+            float solde = Float.parseFloat(testSolde.getText());
+            String ref = textRef.getText();
+            //if (!(textNom.getText().trim().isEmpty()) && !(textDesc.getText().trim().isEmpty()) && !(textQuantity.getText().trim().isEmpty()) && !(tetPrice.getText().trim().isEmpty()) && !(textImg.getText().trim().isEmpty()) && !(testSolde.getText().trim().isEmpty()) && !(textRef.getText().trim().isEmpty()) && isFullname(nom) && isNumber(String.valueOf(quantity)) && isFullname(des) && isFloat(String.valueOf(price)) && isFloat(String.valueOf(solde)) && solde >0 && solde <99 && price >0){
+            prod.setQuantity(quantity);
+            prod.setNom(nom);
+            prod.setPrice(price);
+            prod.setImage(img);
+            prod.setSolde(solde);
+            prod.setReferance(ref);
+            prod.setUpdatedAt(date);
+            prod.setActive(true);
+            serviceProduit.editProduit(prod);
+            tabViewProd.setItems(listM);
+            editer.setVisible(false);
+            addProduitButton.setVisible(true);
+            textRef.clear();
+            textImg.clear();
+            textQuantity.clear();
+            textNom.clear();
+            textDesc.clear();
+            tetPrice.clear();
+            testSolde.clear();
+            textActive.setSelected(false);
+            UpdateTable();
+        }
+    }
+    @FXML
+    void accessCommande(ActionEvent event) throws IOException {
+        rootPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("DashboardCommande.fxml")));
+    }
+
+    @FXML
+    public void deleteProd() {
         ServiceProduit serviceProduit = new ServiceProduit();
         Produit prod = tabViewProd.getSelectionModel().getSelectedItem();
         serviceProduit.deleteProduit(prod);
+        UpdateTable();
     }
 
-
-
-
+    @FXML
+    public void fasa5(){
+        ServiceProduit serviceProduit = new ServiceProduit();
+        Produit prod = tabViewProd.getSelectionModel().getSelectedItem();
+        serviceProduit.deleteProduit(prod);
+        UpdateTable();
+    }
 }

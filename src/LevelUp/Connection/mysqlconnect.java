@@ -1,5 +1,6 @@
 package Esprit.Connection;
 
+import Esprit.entities.Commande;
 import Esprit.entities.Produit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,6 +48,28 @@ public class mysqlconnect {
                 prod.setUpdatedAt(rs.getDate(10));
 
                 list.add(prod);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public static ObservableList<Commande> getDataCommandes(){
+        Connection conn = ConnectDb();
+        ObservableList<Commande> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from commande");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Commande comm = new Commande();
+                comm.setId(rs.getInt(1));
+                comm.setDate(rs.getDate(2));
+                comm.setQuantite(rs.getInt(3));
+                comm.setPrix_total(rs.getFloat(4));
+                comm.setUser_id(rs.getInt(5));
+                comm.setStatus(rs.getString(6));
+                list.add(comm);
             }
         } catch (Exception e) {
         }
