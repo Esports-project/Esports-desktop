@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.List;
 import models.Evenement;
 import models.Classement;
-import services.ServiceClassement;
-import services.ServiceEvenement;
 
 /**
  *

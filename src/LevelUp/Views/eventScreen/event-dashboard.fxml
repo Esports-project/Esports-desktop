@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LevelUp.Views.eventScreen.EventDashboardController">
+   <children>
+      <HBox prefHeight="348.0" prefWidth="651.0">
+         <children>
+            <ScrollPane prefHeight="393.0" prefWidth="434.0">
+               <content>
+                  <VBox fx:id="eventList" prefHeight="348.0" prefWidth="510.0" />
+               </content>
+            </ScrollPane>
+            <VBox prefHeight="393.0" prefWidth="216.0">
+               <children>
+                  <Label text="Nom:" />
+                  <TextField fx:id="nom">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Description:" />
+                  <TextArea fx:id="description" prefHeight="106.0" prefWidth="141.0" />
+                  <Label text="Organisateur:" />
+                  <TextField fx:id="organisateur" />
+                  <DatePicker fx:id="datePicker">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Button fx:id="filepicker" mnemonicParsing="false" onAction="#ajoutImage" prefHeight="25.0" prefWidth="163.0" text="Fichier">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <StackedBarChart fx:id="statsEvents">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="statsNumberAxis" side="LEFT" />
+                    </yAxis>
+                  </StackedBarChart>
+                  <Button mnemonicParsing="false" onAction="#ajoutEvenement" prefHeight="30.0" prefWidth="141.0" text="Ajout evenement" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

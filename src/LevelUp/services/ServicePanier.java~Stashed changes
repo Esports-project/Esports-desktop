@@ -1,0 +1,13 @@
+package LevelUp.Services;
+
+import LevelUp.Entities.Panier;
+import LevelUp.Entities.Produit;
+import LevelUp.Entities.LigneCommande;
+
+import LevelUp.Connection.MyConnection;
+import java.sql.Connection;
+import java.lang.Integer;
+import javafx.collections.ObservableMap;
+
+public class ServicePanier {
+}

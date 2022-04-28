@@ -1,4 +1,4 @@
-package Esprit.Connection;
+package LevelUp.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

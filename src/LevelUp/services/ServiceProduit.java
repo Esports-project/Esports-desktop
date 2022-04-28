@@ -1,7 +1,8 @@
-package Esprit.services;
 
-import Esprit.Connection.MyConnection;
-import Esprit.entities.Produit;
+package LevelUp.Services;
+
+import LevelUp.Connection.MyConnection;
+import LevelUp.Entities.Produit;
 
 import java.sql.*;
 import java.text.DateFormat;

@@ -1,8 +1,8 @@
-package Esprit.services;
 
-import Esprit.Connection.MyConnection;
-import Esprit.entities.Messages;
-import Esprit.entities.Reclamation;
+package LevelUp.Services;
+
+import LevelUp.Connection.MyConnection;
+import LevelUp.Entities.Messages;
 
 import java.sql.*;
 import java.util.ArrayList;

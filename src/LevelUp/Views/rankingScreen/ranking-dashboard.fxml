@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LevelUp.Views.rankingScreen.RankingDashboardController">
+   <children>
+      <HBox prefHeight="348.0" prefWidth="651.0">
+         <children>
+            <ScrollPane prefHeight="348.0" prefWidth="509.0">
+               <content>
+                  <VBox fx:id="classmentList" prefHeight="348.0" prefWidth="510.0" />
+               </content>
+            </ScrollPane>
+            <VBox prefHeight="348.0" prefWidth="141.0">
+               <children>
+                  <Label text="Rang" />
+                  <TextField fx:id="rang">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Equipe id" />
+                  <ComboBox fx:id="equipe" prefWidth="150.0" />
+                  <Label text="Evenement" />
+                  <ComboBox fx:id="evenement" prefWidth="150.0" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Button mnemonicParsing="false" onAction="#clickedAdd" prefHeight="30.0" prefWidth="141.0" text="Ajout classement" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

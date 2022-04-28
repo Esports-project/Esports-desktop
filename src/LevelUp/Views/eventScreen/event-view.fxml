@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="600.0" prefWidth="609.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LevelUp.Views.eventScreen.EventController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="657.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+         <image>
+            <Image url="@../../Resources/background.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="24.0" text="Events" textFill="WHITE">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="4.0" layoutY="139.0" prefHeight="453.0" prefWidth="601.0" style="-fx-background-color: transparent;" stylesheets="@../../Resources/stylesheet.css">
+         <content>
+            <VBox fx:id="eventList" prefHeight="510.0" prefWidth="599.0" />
+         </content>
+      </ScrollPane>
+      <TextField fx:id="searchText" layoutX="230.0" layoutY="78.0" promptText="Recherche" />
+      <Label layoutX="161.0" layoutY="82.0" text="Recherche :" textFill="WHITE" />
+   </children>
+</Pane>
