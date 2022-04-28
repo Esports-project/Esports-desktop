@@ -3,6 +3,7 @@ package LevelUp.Views.reclamationScreen;
 import LevelUp.Services.ServiceReclamation;
 
 import LevelUp.Entities.Reclamation;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -39,7 +40,7 @@ public class RItemController {
         RDashboardController rd = new RDashboardController();
     }
 
-    public void editReclamation(ActionEvent e){
+    public void editReclamation(ActionEvent e) throws SQLException {
         title.getText();
         content.getText();
         ServiceReclamation sr = new ServiceReclamation();
