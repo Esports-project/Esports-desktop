@@ -17,6 +17,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import Services.IServiceEquipe;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -49,14 +51,14 @@ public void createEquipe(Equipe E ) {
 
 
 
-    public void modifyEquipe(Equipe E) {
+    public void modifierEquipe(Equipe E, int id) {
         try {
 
                 String sql = "UPDATE equipe SET nom=? WHERE id=?";
 
                 PreparedStatement st = cnx.prepareStatement(sql);
                 st.setString(1, E.getNom());
-                st.setInt(2, E.getId());
+                st.setInt(2,id);
 
                 st.executeUpdate();
                 System.out.println("Modification avec succees !");
@@ -82,8 +84,8 @@ public void createEquipe(Equipe E ) {
         }
     }
 
-    public List<Equipe> readEquipe() {
-        ArrayList<Equipe> equipes = new ArrayList();
+    public ObservableList<Equipe> readEquipe() {
+        ObservableList<Equipe> equipes = FXCollections.observableArrayList();
 
         try {
             Statement st = cnx.createStatement();
@@ -122,6 +124,11 @@ public void createEquipe(Equipe E ) {
         }
 
         return null;
+    }
+
+    @Override
+    public void modifyEquipe(Equipe E) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -12,6 +12,15 @@ public class Jeux {
     private int id;
     private String nom ;
     private String Description;
+    static int test;
+
+    public static int getTest() {
+        return test;
+    }
+
+    public static void setTest(int test) {
+        Jeux.test = test;
+    }
 
     public Jeux() {}
 
@@ -22,6 +31,11 @@ public class Jeux {
 
     public Jeux(int id, String nom, String Description) {
         this.id = id;
+        this.nom = nom;
+        this.Description = Description;
+    }
+
+    public Jeux(String nom, String Description) {
         this.nom = nom;
         this.Description = Description;
     }

@@ -26,7 +26,6 @@ public class PidevDorra {
      */
     public static void main(String[] args) {
         // TODO code application logic here 
-
         //test d'ajout
         JeuxServices JeuSer = new JeuxServices();
         java.sql.Date currentDate = new java.sql.Date(Date.from(Instant.now()).getTime());

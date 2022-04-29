@@ -4,6 +4,7 @@
  */
 package Services;
 
+import Entities.Equipe;
 import Entities.Jeux;
 import Utils.MyDB;
 import java.sql.Connection;
@@ -16,6 +17,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import Services.IServiceJeux;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -48,7 +51,7 @@ public class JeuxServices implements IServiceJeux {
 
     }
 
-    public void modifyJeux(Jeux J) {
+    public void modifyJeux(Jeux J , int id) {
         try {
 
                 String sql = "UPDATE Jeux SET nom=?,description=? WHERE id=?";
@@ -56,7 +59,8 @@ public class JeuxServices implements IServiceJeux {
                 PreparedStatement st = cnx.prepareStatement(sql);
                 st.setString(1, J.getNom());
                 st.setString(2, J.getDescription());
-                st.setInt(3, J.getId());
+                st.setInt(3,id);
+
 
 
                 st.executeUpdate();
@@ -83,8 +87,9 @@ public class JeuxServices implements IServiceJeux {
         }
     }
 
-    public List<Jeux> readJeux() {
-        ArrayList<Jeux> Jeuxs = new ArrayList();
+    public ObservableList<Jeux> readJeux() {
+       
+         ObservableList<Jeux> Jeuxs = FXCollections.observableArrayList();
 
         try {
             Statement st = cnx.createStatement();
@@ -125,8 +130,34 @@ public class JeuxServices implements IServiceJeux {
         return null;
     }
 
+    @Override
+    public void modifyJeux(Jeux J) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
-    
+    public Jeux getById(int aInt) throws SQLException {
+    Jeux jeu = new Jeux();
+
+        String req = "select * from jeux where id="+aInt;
+        Statement stm = cnx.createStatement();
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+          
+            jeu = new Jeux (
+                     rst.getInt("id"),//or rst.getInt(1)
+                    rst.getString("nom"),
+                    rst.getString("description")
+                     
+                                
+            );
+           
+        }
+        return jeu;
+      
+    }
+
 
     
 }

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.JeuxfrontController">
+   <children>
+      <Pane layoutX="962.0" layoutY="706.0" prefHeight="42.0" prefWidth="70.0" />
+      <Label layoutX="533.0" layoutY="42.0" prefHeight="29.0" prefWidth="125.0" text="English" textFill="#878787" underline="true">
+         <font>
+            <Font name="Cambria" size="18.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="420.0" layoutY="148.0" prefHeight="84.0" prefWidth="320.0" styleClass="shopping-online-card" stylesheets="@../src/values/style.css">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="236.0">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="229.0" text="Shopping online" textFill="#878787">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="20.0" prefWidth="207.0" text="get your shopping in same day" textFill="#878787">
+                     <font>
+                        <Font name="Cambria" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="237.0" text="over $20 order" textFill="#878787">
+                     <font>
+                        <Font name="Cambria" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/ic_stopwatch.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Label layoutX="438.0" layoutY="41.0" prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="1326.0" layoutY="42.0" prefHeight="29.0" prefWidth="101.0" text="My Account" textFill="#878787">
+         <font>
+            <Font name="Cambria" size="18.0" />
+         </font>
+      </Label>
+      <VBox layoutX="5.0" layoutY="8.0" prefHeight="1215.0" prefWidth="356.0" styleClass="right-bar" stylesheets="@../src/values/style.css">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="620.0" prefWidth="356.0" spacing="2.0" style="-fx-background-color: #666;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="143.0" prefWidth="320.0" stylesheets="@style.css">
+                     <children>
+                        <Label prefHeight="49.0" prefWidth="51.0" text="E-" textFill="#878787">
+                           <font>
+                              <Font name="Cambria Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label stylesheets="@style.css" text="TSPORTS" textFill="#878787">
+                           <font>
+                              <Font name="Cambria" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Hyperlink alignment="TOP_CENTER" contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#gotoStore" prefHeight="34.0" prefWidth="356.0" styleClass="navigation-hyperlink" stylesheets="@../resources/css/style.css" text="Store" textAlignment="CENTER" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Hyperlink>
+                  <ImageView fitHeight="53.0" fitWidth="71.0">
+                     <image>
+                        <Image url="@../../../Desktop/GameStore/src/resources/images/icons/ic_store_white_48dp_2x.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink alignment="TOP_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" onAction="#gotoLibrary" prefHeight="199.0" prefWidth="356.0" styleClass="navigation-hyperlink" stylesheets="@../resources/css/style.css" text="games" textAlignment="CENTER" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Hyperlink>
+                  <Hyperlink alignment="TOP_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="33.0" maxWidth="1.7976931348623157E308" onAction="#gotoAccount" prefHeight="259.0" prefWidth="356.0" styleClass="navigation-hyperlink" stylesheets="@../resources/css/style.css" text="posts" textAlignment="CENTER" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Hyperlink>
+                  <Hyperlink fx:id="cartButton" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="56.0" maxWidth="1.7976931348623157E308" onAction="#showCart" prefHeight="174.0" prefWidth="356.0" style="-fx-border-width: 1 0 1 0;" styleClass="navigation-hyperlink" text="contact us " textAlignment="CENTER" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <stylesheets>
+                        <URL value="@../resources/css/style.css" />
+                        <URL value="@style.css" />
+                     </stylesheets>
+                  </Hyperlink>
+               </children>
+            </VBox>
+            <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="430.0" prefWidth="320.0">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
+               <children>
+                  <HBox prefHeight="60.0" prefWidth="335.0">
+                     <children>
+                        <Label fx:id="fruitNameLable" prefHeight="44.0" prefWidth="110.0" text="test" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fruitPriceLabel" prefHeight="44.0" prefWidth="106.0" text="\$2.99" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ImageView fx:id="fruitImg1" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/peach.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="pnamed" prefHeight="21.0" prefWidth="65.0" text="Label" />
+                  <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                     <children>
+                        <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="1" styleClass="comboBox" stylesheets="@../src/values/style.css" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Separator prefHeight="0.0" prefWidth="118.0" />
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="64.0" text="or" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="24.0" />
+                           </font>
+                        </Label>
+                        <Separator prefHeight="0.0" prefWidth="118.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                     <children>
+                        <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox" stylesheets="@../src/values/style.css" />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../src/values/style.css" text="ADD TO CART" textFill="#828282">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+               <styleClass>
+                  <String fx:value="chosen-fruit-card" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../src/values/style.css" />
+                  <URL value="@style.css" />
+               </stylesheets>
+            </VBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="866.0" layoutY="148.0" prefHeight="84.0" prefWidth="305.0" styleClass="free-delivery-card" stylesheets="@../src/values/style.css">
+         <children>
+            <Label prefHeight="39.0" prefWidth="160.0" text="Free delivery" textFill="#878787">
+               <font>
+                  <Font name="Cambria Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/ic_delivery.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="520.0" layoutY="238.0" prefHeight="65.0" prefWidth="591.0" stylesheets="@../src/values/style.css">
+         <children>
+            <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../src/values/style.css">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </TextField>
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="104.0" styleClass="search-button" text="Search" textFill="WHITE">
+               <stylesheets>
+                  <URL value="@../src/values/style.css" />
+                  <URL value="@../values/style.css" />
+               </stylesheets>
+            </Button>
+         </children>
+         <styleClass>
+            <String fx:value="search-box" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </HBox>
+      <AnchorPane id="AnchorPane" layoutX="438.0" layoutY="281.0" prefHeight="788.0" prefWidth="658.0">
+         <children>
+            <VBox prefHeight="788.0" prefWidth="1071.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="803.0" prefWidth="1050.0" styleClass="transparent">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="0.0" prefWidth="24.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="50.0" fitWidth="55.0" layoutX="1435.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/ic_cart.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER_LEFT" layoutX="361.0" layoutY="10.0" prefHeight="117.0" prefWidth="1255.0" spacing="8.0" style="-fx-background-color: #555;" stylesheets="@style.css">
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <children>
+            <ImageView fitHeight="106.0" fitWidth="176.0">
+               <image>
+                  <Image url="@../Images/logoesports.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="59.0" prefWidth="180.0" text="Game Store" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefWidth="500.0" />
+            <Button mnemonicParsing="false" onAction="#showHelp" styleClass="my-button" text="Help" />
+            <Button mnemonicParsing="false" onAction="#proccessLogout" styleClass="my-button" text="Logout" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
