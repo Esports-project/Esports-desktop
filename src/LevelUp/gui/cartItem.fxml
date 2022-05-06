@@ -59,6 +59,8 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
+                  <Label prefHeight="17.0" prefWidth="48.0" />
+                  <Button fx:id="removeItemCart" mnemonicParsing="false" onAction="#removeItemCart" text="X" />
                </children>
             </HBox>
             </children>

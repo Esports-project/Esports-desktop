@@ -3,7 +3,11 @@ package Esprit.services;
 import Esprit.entities.*;
 
 import Esprit.Connection.MyConnection;
+import Esprit.utils.mailUtil;
+import Esprit.utils.generatePdf;
 
+import javax.mail.MessagingException;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.Calendar;
 import java.util.List;
@@ -57,7 +61,9 @@ public class ServiceCommande {
                 serviceProduit.reduceQuantityComm(p,cart.getQuantity());
                 ShoppingCart.getInstance().removeProduct(cart.getProduit().getReferance());
             }
-        } catch (SQLException e) {
+            generatePdf.pdf(comm);
+            mailUtil.sendMail("rayen.bourguiba@esprit.tn",comm);
+        } catch (SQLException | MessagingException | FileNotFoundException e ) {
             e.printStackTrace();
         }
     }

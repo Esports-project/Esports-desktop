@@ -4,6 +4,7 @@ import Esprit.entities.CartEntry;
 import Esprit.entities.Produit;
 import Esprit.entities.ShoppingCart;
 import Esprit.utils.MyListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -43,7 +44,15 @@ public class CartItemController {
     private Label quantityItemPrice;
 
     @FXML
+    private Button removeItemCart;
+
+    @FXML
     void click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void removeItemCart(ActionEvent event) {
 
     }
 
