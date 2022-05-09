@@ -13,14 +13,40 @@ public class Jeux {
     private String nom ;
     private String Description;
     static int test;
+    int e;
+float m;
 
-    public static int getTest() {
-        return test;
+    public float getM() {
+        return m;
     }
 
-    public static void setTest(int test) {
-        Jeux.test = test;
+    public void setM(float m) {
+        this.m = m;
     }
+
+    public Jeux(int id, String nom, String Description, float m) {
+        this.id = id;
+        this.nom = nom;
+        this.Description = Description;
+        this.m = m;
+    }
+
+    public Jeux(int id, String nom, String Description, int e) {
+        this.id = id;
+        this.nom = nom;
+        this.Description = Description;
+        this.e = e;
+    }
+
+    public int getE() {
+        return e;
+    }
+
+    public void setE(int e) {
+        this.e = e;
+    }
+
+    
 
     public Jeux() {}
 
@@ -64,14 +90,22 @@ public class Jeux {
     public String getDescription() {
         return Description;
     }
+public static int getTest() {
+        return test;
+    }
 
+    public static void setTest(int test) {
+        Jeux.test = test;
+    }
     public void setDescription(String Description) {
         this.Description = Description;
     }
 
     @Override
     public String toString() {
-        return "Jeux{" + "id=" + id + ", nom=" + nom + ", Description=" + Description + '}';
+        return "Jeux{" + "id=" + id + ", nom=" + nom + ", Description=" + Description + ", e=" + e + ", m=" + m + '}';
     }
+
+    
     
 }

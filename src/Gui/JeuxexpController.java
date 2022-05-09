@@ -75,11 +75,11 @@ public class JeuxexpController implements Initializable {
 
 
     @FXML
-    private void detail(ActionEvent event) {
+    private void detail(ActionEvent event) throws IOException {
         JeuxServices serveJ = new JeuxServices();   
         Jeux J = new Jeux() ;
                  J.setTest(Integer.parseInt(idppp.getText()));
-                 try {
+                 
               Parent root = FXMLLoader.load(getClass().getResource("detailjeux.fxml"));
           Stage stage = new Stage();
      
@@ -87,9 +87,7 @@ public class JeuxexpController implements Initializable {
                     stage.setScene(new Scene(root)); 
                     stage.show();
      
-        } catch (IOException ex) {
-               System.out.println("can't load comrnt window");
-        }
+         
     }
     
 }

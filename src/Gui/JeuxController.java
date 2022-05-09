@@ -10,7 +10,13 @@ import Services.EquipeServices;
 import Services.JeuxServices;
 import javafx.scene.layout.AnchorPane;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -23,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javax.swing.JOptionPane;
+import org.controlsfx.control.textfield.TextFields;
 
 /**
  * FXML Controller class
@@ -51,6 +58,10 @@ public class JeuxController implements Initializable {
     private TableColumn<Jeux,String> descriptableau;
     @FXML
     private TableView<Jeux> testtableau;
+    @FXML
+    private TableColumn<Jeux, Float> rate;
+    @FXML
+    private TextField recherche;
 
     /**
      * Initializes the controller class.
@@ -62,6 +73,8 @@ public class JeuxController implements Initializable {
         idtableau.setCellValueFactory(new PropertyValueFactory<Jeux, Integer>("id"));
         nomtableau.setCellValueFactory(new PropertyValueFactory<Jeux, String>("nom"));
         descriptableau.setCellValueFactory(new PropertyValueFactory<Jeux, String>("description"));
+                rate.setCellValueFactory(new PropertyValueFactory<Jeux, Float>("m"));
+
         testtableau.setItems(serveJ.readJeux());
         
         supprimerjeux.setOnMouseClicked((MouseEvent event) -> {
@@ -81,6 +94,51 @@ public class JeuxController implements Initializable {
             //FXMLLoader loader = new FXMLLoader();
 //            loader.setLocation(getClass().getResource("/tableView/addStudent.fxml"));
         });
+        
+        JeuxServices serv = new JeuxServices();
+            List<String> a;
+     
+        try {
+            a = serv.getCat();
+        } catch (SQLException ex) {
+            Logger.getLogger(JeuxController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            TextFields.bindAutoCompletion(recherche, serv.getCat());
+        } catch (SQLException ex) {
+            Logger.getLogger(JeuxController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         
+          //  nom.setCellValueFactory(new PropertyValueFactory<Categorie, String>("nom"));
+
+       
+            testtableau.setItems(serv.readJeux());
+       
+
+            FilteredList<Jeux> filteredData;
+       
+            filteredData = new FilteredList<>(serv.readJeux(), b -> true);
+       
+
+            recherche.textProperty().addListener((observable, oldvalue, newValue) -> {
+                filteredData.setPredicate(Categorie -> {
+                   
+                    if (newValue.isEmpty() || newValue == null) {
+                        return true;
+                    }
+                    String searchkeyword = newValue.toLowerCase();
+                    if (Categorie.getNom().toLowerCase().indexOf(searchkeyword) > -1) {
+                        return true;        // Means we found a match in ProductName
+                    } else {
+                        return false; // no match found
+                    }
+                });
+            });
+           
+            SortedList<Jeux> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(testtableau.comparatorProperty());
+            testtableau.setItems(sortedData);
     }    
 
       

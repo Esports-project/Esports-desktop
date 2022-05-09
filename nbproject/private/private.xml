@@ -3,14 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/IServiceReview.java</file>
             <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Entities/Jeux.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Entities/review.java</file>
             <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/IServiceJeux.java</file>
-            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/EquipeServices.java</file>
-            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Entities/Equipe.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/reviewServices.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/jeuxfront.fxml</file>
             <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/IServiceEquipe.java</file>
-            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/JeuxServices.java</file>
-            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Utils/MyDB.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/jeuxexp.fxml</file>
             <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/pidevdorra/PidevDorra.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/DetailjeuxController.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/detailjeux.fxml</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/equipe.fxml</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/EquipeController.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/EquipeServices.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/JeuxfrontController.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Entities/Equipe.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/JeuxController.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/jeux.fxml</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Services/JeuxServices.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/JeuxexpController.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/HelloApplication.java</file>
+            <file>file:/C:/Users/dorra/Documents/NetBeansProjects/PidevDorra/src/Gui/HelloController.java</file>
         </group>
     </open-files>
 </project-private>

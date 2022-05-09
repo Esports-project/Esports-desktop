@@ -14,9 +14,10 @@
       <Label fx:id="descriptiondetail" layoutX="187.0" layoutY="244.0" prefHeight="17.0" prefWidth="77.0" text="label" />
       <Label fx:id="nomdetail" layoutX="118.0" layoutY="244.0" prefHeight="17.0" prefWidth="60.0" text="label" />
       <Label fx:id="iddetailjeux" layoutX="56.0" layoutY="244.0" prefHeight="17.0" prefWidth="47.0" text="label" />
-      <Rating fx:id="ratingnote" layoutX="50.0" layoutY="281.0" />
-      <TextField fx:id="avisdetail" layoutX="43.0" layoutY="334.0" />
-      <Button fx:id="submitdetail" layoutX="200.0" layoutY="334.0" mnemonicParsing="false" text="Submit" />
       <ListView fx:id="listreview" layoutX="328.0" layoutY="51.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="avisjeux" layoutX="138.0" layoutY="338.0" />
+      <Button fx:id="submitrating" layoutX="316.0" layoutY="363.0" mnemonicParsing="false" onAction="#submrate" prefHeight="25.0" prefWidth="77.0" text="Submit" />
+      <Rating fx:id="ratingjeux" layoutX="199.0" layoutY="288.0" />
+      <Button layoutX="438.0" layoutY="351.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

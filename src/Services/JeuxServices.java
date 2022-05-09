@@ -93,12 +93,12 @@ public class JeuxServices implements IServiceJeux {
 
         try {
             Statement st = cnx.createStatement();
-            String req = "SELECT * FROM Jeux";
+            String req = "select jeux.id,jeux.nom,jeux.description, round(AVG(review.note),1) as m from jeux left JOIN review ON (review.jeux_id_id=jeux.id) group by (review.jeux_id_id);";
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
 
-                Jeuxs.add(new Jeux(rs.getInt("id"), rs.getString("nom"),rs.getString("description")));
+                Jeuxs.add(new Jeux(rs.getInt("id"), rs.getString("nom"),rs.getString("description"),rs.getFloat("m")));
 
             }
 
@@ -132,7 +132,7 @@ public class JeuxServices implements IServiceJeux {
 
     @Override
     public void modifyJeux(Jeux J) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
@@ -157,7 +157,21 @@ public class JeuxServices implements IServiceJeux {
         return jeu;
       
     }
+ public List<String> getCat() throws SQLException {
+        List<String> list = new ArrayList();
+        String req = "select nom from jeux";
+         Statement stm = cnx.createStatement();
+        ResultSet rst = stm.executeQuery(req);
+      
 
+        while (rst.next()) {                            
+            list.add(rst.getString("nom"));
+        }
+       
+        System.out.println(list);
+        return list;
+   
+    }
 
     
 }

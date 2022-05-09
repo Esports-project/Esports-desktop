@@ -27,6 +27,9 @@ public class review {
         this.id = id;
     }
 
+    public review() {
+    }
+
     public int getJeux_id_id() {
         return jeux_id_id;
     }

@@ -29,12 +29,9 @@ public class reviewServices implements IServiceReview  {
 
         //request
         try {
-            String req = "INSERT INTO `review`(`note`, `avis`, `jeux_id_id`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `review`(`note`, `avis`, `jeux_id_id`) VALUES (?,?,?)";
             PreparedStatement st = cnx.prepareStatement(req); 
-            System.out.println(st.toString());
-            System.out.println(R.getNote());
-            System.out.println(R.getAvis());
-            System.out.println(R.getJeux_id_id());
+          
             st.setDouble(1, R.getNote());
             st.setString(2, R.getAvis());
             st.setInt(3, R.getJeux_id_id());

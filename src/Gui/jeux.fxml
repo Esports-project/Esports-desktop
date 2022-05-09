@@ -16,11 +16,12 @@
       <Button fx:id="addJeu" layoutX="60.0" layoutY="117.0" mnemonicParsing="false" onAction="#addJeux" text="Ajouter" />
       <Button fx:id="modifierjeux" layoutX="132.0" layoutY="117.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
       <Button fx:id="supprimerjeux" layoutX="209.0" layoutY="117.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
-      <TableView fx:id="testtableau" layoutX="60.0" layoutY="174.0" prefHeight="200.0" prefWidth="229.0">
+      <TableView fx:id="testtableau" layoutX="60.0" layoutY="174.0" prefHeight="200.0" prefWidth="353.0">
         <columns>
           <TableColumn fx:id="idtableau" prefWidth="75.0" text="Id" />
           <TableColumn fx:id="nomtableau" prefWidth="75.0" text="Nom" />
             <TableColumn fx:id="descriptableau" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="rate" prefWidth="75.0" text="note" />
         </columns>
       </TableView>
       <Pane layoutX="13.0" layoutY="14.0" prefHeight="52.0" prefWidth="651.0" style="-fx-background-color: black;">
@@ -32,5 +33,6 @@
             </Label>
          </children>
       </Pane>
+      <TextField fx:id="recherche" layoutX="414.0" layoutY="83.0" />
    </children>
 </AnchorPane>
