@@ -18,6 +18,6 @@
       <TextField fx:id="avisjeux" layoutX="138.0" layoutY="338.0" />
       <Button fx:id="submitrating" layoutX="316.0" layoutY="363.0" mnemonicParsing="false" onAction="#submrate" prefHeight="25.0" prefWidth="77.0" text="Submit" />
       <Rating fx:id="ratingjeux" layoutX="199.0" layoutY="288.0" />
-      <Button layoutX="438.0" layoutY="351.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="pdf" layoutX="438.0" layoutY="351.0" mnemonicParsing="false" onAction="#imprimer" text="Button" />
    </children>
 </AnchorPane>

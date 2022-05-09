@@ -8,9 +8,25 @@ import Entities.Jeux;
 import Entities.review;
 import Services.JeuxServices;
 import Services.reviewServices;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.CMYKColor;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +43,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import javax.swing.JFileChooser;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 
@@ -54,6 +71,8 @@ Jeux jjj= new Jeux();
     private Button submitrating;
     @FXML
     private Rating ratingjeux;
+    @FXML
+    private Button pdf;
     
     /**
      * Initializes the controller class.
@@ -129,5 +148,109 @@ Jeux jjj= new Jeux();
             }
             listreview.setItems(list);
 
+    }
+
+    @FXML
+    private void imprimer(ActionEvent event) throws FileNotFoundException, DocumentException, BadElementException, IOException {
+         JFileChooser chooser=new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f= chooser.getSelectedFile();
+        String filename=f.getAbsolutePath();
+        Document document = new Document();
+       
+                    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));  
+                     document.open();
+                      PdfPTable table = new PdfPTable(3); // 3 columns.
+                    table.setWidthPercentage(100); //Width 100%
+                    table.setSpacingBefore(10f); //Space before table
+                    table.setSpacingAfter(10f); //Space after table
+                    float[] columnWidths = {1f, 1f, 1f};
+                    table.setWidths(columnWidths);
+                     PdfPCell cell1 = new PdfPCell(new Paragraph("nom produit"));
+                    cell1.setBorderColor(BaseColor.RED);
+                    cell1.setPaddingLeft(10);
+                    cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cell1);
+                   
+                    cell1 = new PdfPCell(new Paragraph("PRIX"));
+                    cell1.setBorderColor(BaseColor.RED);
+                    cell1.setPaddingLeft(10);
+                    cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cell1);
+                   
+                    cell1 = new PdfPCell(new Paragraph("marque"));
+                    cell1.setBorderColor(BaseColor.RED);
+                    cell1.setPaddingLeft(10);
+                    cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cell1);
+                    table.setHeaderRows(1);
+                   
+                    //To avoid having the cell border and the content overlap, if you are having thick cell borders
+                    //cell1.setUserBorderPadding(true);
+                    //cell2.setUserBorderPadding(true);
+                    //cell3.setUserBorderPadding(true);
+                    PdfPCell cell2 = new PdfPCell(new Paragraph(nomdetail.getText()));
+                    cell2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                    cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    cell2.setBorderColor(BaseColor.BLUE);
+                    table.addCell(cell2);
+                    PdfPCell price1 = new PdfPCell(new Paragraph(descriptiondetail.getText()));
+                    price1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    price1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    price1.setBorderColor(BaseColor.RED);
+                    table.addCell(price1);
+                     PdfPCell contrat2 = new PdfPCell(new Paragraph(nomdetail.getText()));
+                    contrat2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                    contrat2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    contrat2.setBorderColor(BaseColor.RED);
+                    table.addCell(contrat2);
+                   
+                   
+                    com.itextpdf.text.Image image1 = com.itextpdf.text.Image.getInstance("C:\\Users\\MSi\\Esports\\src\\Images\\logoesports.png");
+                     image1.setAbsolutePosition(100f, 550f);
+                   
+                    //Scale to new height and new width of image
+                    image1.scaleAbsolute(200, 200);
+                     document.addTitle("product");
+                    document.addAuthor("esports");
+                    document.addSubject("fiche technique du produit.");
+                    Font blueFont = FontFactory.getFont(FontFactory.HELVETICA, 8, Font.NORMAL, new CMYKColor(255, 0, 0, 0));
+                    Font redFont = FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD, new CMYKColor(0, 255, 200, 50));
+                   
+                    Paragraph sectionTitle = new Paragraph("produit disponible dans notre application  ", redFont);
+                    Paragraph sectionTitle2 = new Paragraph("ETSPORTS APPLICATION :", redFont);
+                   
+                    java.sql.Timestamp date_sql = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+                    String rescreation = date_sql.toString();
+                   
+                    Paragraph sectionTitle3 = new Paragraph("created at :" + rescreation.substring(0, 10) + "", blueFont);
+                   
+                    sectionTitle.setAlignment(com.itextpdf.text.Element.ALIGN_BOTTOM);
+                    sectionTitle2.setAlignment(com.itextpdf.text.Element.ALIGN_BOTTOM);
+                    sectionTitle3.setAlignment(com.itextpdf.text.Element.ALIGN_BOTTOM);
+                   
+                    document.add(sectionTitle);
+                    document.add(sectionTitle2);
+                   
+                    document.add(sectionTitle3);
+                   
+                    image1.setAbsolutePosition(17, 780f);
+                    document.add(image1);
+                   
+                    document.add(table);
+                    Paragraph signature = new Paragraph("Produit original", blueFont);
+                    Paragraph notice = new Paragraph("cette fiche doit etre presenté dans notre boutique pour passer la commande ", redFont);
+                    document.add(notice);
+                   
+                    document.add(signature);
+                   
+           // document.addTitle(marquedetail.getText());
+            document.add(new Paragraph("fiche technique du "+nomdetail.getText()+"  contient les details du produit "));
+           
+            document.close();
+        
     }
 }
