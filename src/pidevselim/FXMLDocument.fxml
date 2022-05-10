@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="683.0" style="-fx-background-color: #ffc222;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidevselim.FXMLDocumentController">
+   <children>
+      <ImageView fitHeight="462.0" fitWidth="833.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@bg.PNG" />
+         </image></ImageView>
+      <VBox layoutX="14.0" layoutY="17.0" prefHeight="178.0" prefWidth="82.0" spacing="15.0">
+         <children>
+            <Label text="ID" textFill="#fea410">
+               <font>
+                  <Font name="Poppins Bold" size="12.0" />
+               </font></Label>
+            <Label text="Titre" textFill="#fea410">
+               <font>
+                  <Font name="Poppins Bold" size="12.0" />
+               </font></Label>
+            <Label text="Contenu" textFill="#fea410">
+               <font>
+                  <Font name="Poppins Bold" size="12.0" />
+               </font></Label>
+            <Label text="Photo" textFill="#fea410">
+               <font>
+                  <Font name="Poppins Bold" size="12.0" />
+               </font></Label>
+            <Label text="Date" textFill="#fea410">
+               <font>
+                  <Font name="Poppins Bold" size="12.0" />
+               </font></Label>
+         </children>
+      </VBox>
+      <VBox layoutX="113.0" layoutY="14.0" prefHeight="200.0" prefWidth="142.0" spacing="9.0">
+         <children>
+            <TextField fx:id="tfID" opacity="0.5" style="-fx-background-color: fea410;" />
+            <TextField fx:id="tfTitre" opacity="0.5" prefHeight="23.0" prefWidth="134.0" style="-fx-background-color: fea410;" />
+            <TextField fx:id="tfContenu" opacity="0.5" style="-fx-background-color: fea410;" />
+            <TextField fx:id="tfPhoto" opacity="0.5" style="-fx-background-color: fea410;" />
+            <TextField fx:id="tfDate" opacity="0.5" style="-fx-background-color: fea410;" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvBlogs" layoutX="321.0" layoutY="7.0" onSort="#showBlogs" prefHeight="172.0" prefWidth="466.0" style="-fx-background-color: d3cfdf; -fx-border-color: fea410;">
+        <columns>
+          <TableColumn fx:id="tvID" prefWidth="28.0" style="-fx-background-color: d3cfdf;" text="ID" />
+          <TableColumn fx:id="tvTitre" prefWidth="92.79998779296875" style="-fx-background-color: d3cfdf;" text="Titre" />
+            <TableColumn fx:id="tvContenu" prefWidth="264.0" style="-fx-background-color: d3cfdf;" text="Contenu" />
+            <TableColumn fx:id="tvDate" prefWidth="76.7999267578125" style="-fx-background-color: d3cfdf;" text="Date" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnInsert" layoutX="214.0" layoutY="312.0" mnemonicParsing="false" onAction="#insertRecord" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: fea410;" text="Insert" textFill="#442678">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="btnUpdate" layoutX="368.0" layoutY="312.0" mnemonicParsing="false" onAction="#updateRecord" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: fea410;" text="Update" textFill="#442678">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="btnDelete" layoutX="507.0" layoutY="312.0" mnemonicParsing="false" onAction="#deletebtn" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: fea410;" text="Delete" textFill="#442678">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="evfront" layoutX="333.0" layoutY="370.0" mnemonicParsing="false" onAction="#gotoFront" prefHeight="62.0" prefWidth="159.0" style="-fx-background-color: #442678; -fx-border-color: #fea410;" text="Go To Front" textFill="#fea410">
+         <font>
+            <Font name="Poppins Black Italic" size="21.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
