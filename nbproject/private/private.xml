@@ -4,29 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/tests/ConnexionTest.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/homeScreen/HomeController.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/storeScreen/StoreController.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/eventScreen/event-view.fxml</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/reclamationScreen/RDashboardController.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/eventScreen/ItemController.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceCategory.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Category.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Reclamation.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceProduit.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceMessage.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/rankingScreen/RankingController.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Messages.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/reclamationScreen/RItemController.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/User.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Panier.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/eventScreen/EventController.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/gui/HelloApplication.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceEvenements.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/gui/HelloController.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Classement.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Produit.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/eventScreen/DashboardItemController.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Evenement.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/reclamationScreen/ReclamationController.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceClassement.java</file>
+            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/Views/eventScreen/EventDashboardController.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/Commande.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceLigneCommande.java</file>
             <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/entities/LigneCommande.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceCommande.java</file>
-            <file>file:/C:/wamp64/www/Esports-desktop/src/LevelUp/services/ServiceReclamation.java</file>
         </group>
     </open-files>
 </project-private>

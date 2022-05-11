@@ -4,6 +4,13 @@ package LevelUp.Services;
 
 import LevelUp.Connection.MyConnection;
 import LevelUp.Entities.Evenement;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +19,8 @@ import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class ServiceEvenements {
     private Connection cnx;
     private PreparedStatement ste;
@@ -168,6 +177,34 @@ public class ServiceEvenements {
             ex.printStackTrace();
         }
 
+        return null;
+    }
+    
+    public String[] getWeatherData() throws MalformedURLException, IOException {
+
+        try 
+        {
+            URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q=Tunis&appid=1370ad4dc8c21ab9229ba0ba15eef487&units=metric");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            ObjectMapper mapper = new ObjectMapper();
+            String[] sa = new String[7];
+            JsonNode jsonNode = mapper.readTree(connection.getInputStream());
+            String temperature = jsonNode.get("main").get("temp").toString();
+            sa[0] = temperature;
+            String humidity = jsonNode.get("main").get("humidity").toString();
+            sa[1] = humidity;
+            String description = jsonNode.get("weather").get(0).get("description").toString();
+            sa[2] = description;
+            String pressure = jsonNode.get("main").get("pressure").toString();
+            sa[3] = pressure;
+            String main = jsonNode.get("weather").get(0).get("main").toString();
+            sa[4] = main;
+            sa[5] = jsonNode.get("weather").get(0).get("icon").toString().replace("\"", "").replace("\"", "");
+            
+            return sa;
+        } catch (Exception ex) {
+            Logger.getLogger(ServiceEvenements.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
     }
 }
