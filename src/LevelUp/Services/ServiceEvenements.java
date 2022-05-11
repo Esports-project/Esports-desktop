@@ -16,6 +16,8 @@ public class ServiceEvenements {
     public ServiceEvenements() {
         cnx = MyConnection.getInstance().getConnection();
     }
+
+
     public void createEvenement(Evenement E) {
         try {
             String req = "INSERT INTO `evenement`(`nom`, `organisateur`,  `description`, `image`,`date`) VALUES (?,?,?,?,?)";
@@ -115,5 +117,36 @@ public class ServiceEvenements {
         }
 
         return null;
+    }
+
+    public  String getNameFromID(Integer id){
+        String name = "";
+        String query = "SELECT nom from evenement WHERE id=?";
+        try {
+            ste = cnx.prepareStatement(query);
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()){
+                name = (rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return name;
+    }
+    public  int getIdFromName(String name){
+        int i = 0;
+        String query = "SELECT id from evenement WHERE nom=?";
+        try {
+            ste = cnx.prepareStatement(query);
+            ste.setString(1, name);
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()){
+                i = (rs.getInt(1));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return i;
     }
 }

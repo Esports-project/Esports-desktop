@@ -3,6 +3,8 @@ package Esprit.Views.rankingScreen;
 import Esprit.Entities.Classement;
 
 import Esprit.Services.ServiceClassement;
+import Esprit.Services.ServiceEquipes;
+import Esprit.Services.ServiceEvenements;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -21,9 +23,11 @@ public class RankingItemController {
 
 
     public void setData(Classement cls ){
+        ServiceEvenements sev = new ServiceEvenements();
+        ServiceEquipes seq = new ServiceEquipes();
     rank.setText(String.valueOf(cls.getId()));
-    eventname.setText(String.valueOf(cls.getEvenement_id()));
-    teamname.setText(String.valueOf(cls.getEquipe_id()));
+    eventname.setText(sev.getNameFromID(cls.getEvenement_id()));
+    teamname.setText(seq.getNameFromID(cls.getEquipe_id()));
     }
 
 }

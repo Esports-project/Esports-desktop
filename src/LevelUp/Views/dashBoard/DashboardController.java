@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -25,7 +26,18 @@ public class DashboardController implements Initializable {
     private Button eventBtn;
 
     @FXML
+    private Button teamsBtn;
+
+    @FXML
     private Button rankingBtn;
+
+    @FXML
+    private Button msgBtn;
+
+    @FXML
+    private Button productBtn;
+
+
 
 
 
@@ -38,17 +50,59 @@ public class DashboardController implements Initializable {
     @FXML
     private AnchorPane rankingPane;
 
+    @FXML
+    private AnchorPane teamsPane;
+
+    @FXML
+    private AnchorPane msgPane;
+
+    @FXML
+    private AnchorPane productPane;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            Parent reclamationpage = FXMLLoader.load(getClass().getResource("../reclamationScreen/reclamation-dashboard.fxml"));
-            recPane.getChildren().add(reclamationpage);
+            AnchorPane reclamationpage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../reclamationScreen/reclamation-dashboard.fxml")));
+            AnchorPane.setTopAnchor(reclamationpage, 10.0);
+            AnchorPane.setBottomAnchor(reclamationpage, 10.0);
+            AnchorPane.setLeftAnchor(reclamationpage, 10.0);
+            AnchorPane.setRightAnchor(reclamationpage, 10.0);
+            recPane.getChildren().setAll((AnchorPane)reclamationpage);
 
-            Parent eventpage = FXMLLoader.load(getClass().getResource("../eventScreen/event-dashboard.fxml"));
-            eventPane.getChildren().add(eventpage);
+            AnchorPane eventpage = FXMLLoader.load(getClass().getResource("../eventScreen/event-dashboard.fxml"));
+            AnchorPane.setTopAnchor(eventpage, 10.0);
+            AnchorPane.setBottomAnchor(eventpage, 10.0);
+            AnchorPane.setLeftAnchor(eventpage, 10.0);
+            AnchorPane.setRightAnchor(eventpage, 10.0);
+            eventPane.getChildren().setAll(eventpage);
 
-            Parent rankingpage = FXMLLoader.load(getClass().getResource("../rankingScreen/ranking-dashboard.fxml"));
-            rankingPane.getChildren().add(rankingpage);
+            AnchorPane rankingpage = FXMLLoader.load(getClass().getResource("../rankingScreen/ranking-dashboard.fxml"));
+            AnchorPane.setTopAnchor(rankingpage, 10.0);
+            AnchorPane.setBottomAnchor(rankingpage, 10.0);
+            AnchorPane.setLeftAnchor(rankingpage, 10.0);
+            AnchorPane.setRightAnchor(rankingpage, 10.0);
+            rankingPane.getChildren().setAll(rankingpage);
+
+            AnchorPane teamspage = FXMLLoader.load(getClass().getResource("../teamsScreen/teams-dashboard.fxml"));
+            AnchorPane.setTopAnchor(teamspage, 10.0);
+            AnchorPane.setBottomAnchor(teamspage, 10.0);
+            AnchorPane.setLeftAnchor(teamspage, 10.0);
+            AnchorPane.setRightAnchor(teamspage, 10.0);
+            teamsPane.getChildren().setAll(teamspage);
+
+            AnchorPane msgpage = FXMLLoader.load(getClass().getResource("../messageScreen/msg-view-admin.fxml"));
+            AnchorPane.setTopAnchor(msgpage, 10.0);
+            AnchorPane.setBottomAnchor(msgpage, 10.0);
+            AnchorPane.setLeftAnchor(msgpage, 10.0);
+            AnchorPane.setRightAnchor(msgpage, 10.0);
+            msgPane.getChildren().setAll(msgpage);
+
+            AnchorPane prpage = FXMLLoader.load(getClass().getResource("../storeScreen/store-dashboard.fxml"));
+            AnchorPane.setTopAnchor(prpage, 10.0);
+            AnchorPane.setBottomAnchor(prpage, 10.0);
+            AnchorPane.setLeftAnchor(prpage, 10.0);
+            AnchorPane.setRightAnchor(prpage, 10.0);
+            productPane.getChildren().setAll(prpage);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -64,6 +118,15 @@ public class DashboardController implements Initializable {
         }
         if(e.getSource() == rankingBtn ){
             rankingPane.toFront();
+        }
+        if(e.getSource() == teamsBtn){
+            teamsPane.toFront();
+        }
+        if(e.getSource() == msgBtn){
+            msgPane.toFront();
+        }
+        if(e.getSource() == productBtn){
+            productPane.toFront();
         }
     }
 }

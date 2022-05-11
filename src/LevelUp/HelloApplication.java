@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("Views/homeScreen/home-view.fxml"));
-        stage.initStyle(StageStyle.UNDECORATED);
+
 
         root.setOnMousePressed(event -> {
             x = event.getSceneX();
@@ -30,7 +30,7 @@ public class HelloApplication extends Application {
         });
 
         stage.setTitle("Hello!");
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setScene(new Scene(root));
         stage.show();
     }

@@ -17,17 +17,21 @@ public class ServiceClassement {
         cnx = MyConnection.getInstance().getConnection();
     }
 
-    public void createClassement(Classement C) {
+
+
+    public void createClassement(Classement c) {
 
         //request
-        String req = "INSERT INTO `classement` (`rang`, `equipe_id`, `evenement_id`) VALUES (?,?,?)";
-        try {
-            PreparedStatement st = cnx.prepareStatement(req);
-            st.setInt(1, C.getRang());
-            st.setInt(2, C.getEquipe_id());
-            st.setInt(3, C.getEvenement_id());
 
-            st.executeUpdate();
+        try {
+            String req = "INSERT INTO classement (rang, equipe_id, evenement_id) VALUES (?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(req);
+
+            pst.setInt(1, c.getRang());
+            pst.setInt(2, c.getEquipe_id());
+            pst.setInt(3, c.getEvenement_id());
+
+            pst.executeUpdate();
             System.out.println("evenement ajoutée avec succes.");
 
         } catch (SQLException ex) {
@@ -37,22 +41,24 @@ public class ServiceClassement {
 
     }
 
-    public void modifyClassement(Classement C) {
+    public void modifyClassement(Classement c) {
         try {
+            System.out.println("Trying");
 
             String sql = "UPDATE classement SET rang=?, equipe_id=?, evenement_id=? WHERE id=?";
             ste = cnx.prepareStatement(sql);
 
 
-            ste.setInt(1, C.getRang());
-            ste.setInt(2, C.getEquipe_id());
-            ste.setInt(3, C.getEvenement_id());
-            ste.setInt(4, C.getId());
+            ste.setInt(1, c.getRang());
+            ste.setInt(2, c.getEquipe_id());
+            ste.setInt(3, c.getEvenement_id());
+            ste.setInt(4, c.getId());
 
             ste.executeUpdate();
             System.out.println("modification avec succees !");
 
         } catch (SQLException ex) {
+            System.out.println(c);
             System.out.println(ex.getMessage());
         }
     }

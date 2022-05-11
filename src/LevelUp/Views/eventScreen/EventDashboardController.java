@@ -1,15 +1,16 @@
 package Esprit.Views.eventScreen;
 
+import Esprit.Connection.MySqlConnect;
 import Esprit.Entities.Evenement;
+import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceEvenements;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -18,6 +19,9 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
@@ -27,8 +31,27 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class EventDashboardController implements Initializable {
+
     @FXML
-    private VBox eventList;
+    private TableView tableView;
+
+    @FXML
+    private TableColumn colId;
+
+    @FXML
+    private TableColumn colNom;
+
+    @FXML
+    private TableColumn colOrg;
+
+    @FXML
+    private TableColumn colDesc;
+
+    @FXML
+    private TableColumn colImage;
+
+    @FXML
+    private TableColumn colDate;
 
     @FXML
     private TextField nom;
@@ -49,23 +72,29 @@ public class EventDashboardController implements Initializable {
 
     private Evenement ev;
 
+    ObservableList<Evenement> listM;
+    int index1 = -1;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    updateTable();
 
-        ServiceEvenements se = new ServiceEvenements();
-        se.readEvenements().forEach(evenement -> {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("dashboard-item.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-                DashboardItemController itemController = fxmlLoader.getController();
-                itemController.setData(evenement);
-                eventList.getChildren().add(anchorPane);
+    }
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    public void updateTable() {
+
+        colId.setCellValueFactory(new PropertyValueFactory<Evenement, Integer>("Id"));
+        colNom.setCellValueFactory(new PropertyValueFactory<Evenement, String>("nom"));
+        colOrg.setCellValueFactory(new PropertyValueFactory<Evenement, String>("organisateur"));
+        colDesc.setCellValueFactory(new PropertyValueFactory<Evenement, String>("description"));
+        colImage.setCellValueFactory(new PropertyValueFactory<Evenement, String>("image"));
+        colDate.setCellValueFactory(new PropertyValueFactory<Evenement, java.util.Date>("date"));
+
+        listM = MySqlConnect.getDataEvenement();
+        tableView.setItems(listM);
     }
 
     public void ajoutImage(ActionEvent e){

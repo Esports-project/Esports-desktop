@@ -9,28 +9,72 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.dashBoard.DashboardController">
-   <children>
-      <Pane prefHeight="400.0" prefWidth="129.0" style="-fx-background-color: black;">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.dashBoard.DashboardController">
+   <center>
+      <AnchorPane style="-fx-background-color: yellow;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="reclamationBtn" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Reclamation" />
-            <Button fx:id="eventBtn" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Evenements" />
-            <Button fx:id="rankingBtn" layoutX="10.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="109.0" style="-fx-background-color: white;" text="Ranking" />
+            <StackPane fx:id="pane" prefHeight="348.0" prefWidth="651.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane fx:id="recPane" style="-fx-background-color: white;" />
+                  <AnchorPane fx:id="eventPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                  <AnchorPane fx:id="rankingPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                  <AnchorPane fx:id="teamsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                  <AnchorPane fx:id="msgPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                  <AnchorPane fx:id="productPane" prefHeight="348.0" prefWidth="557.0" style="-fx-background-color: white;" />
+               </children>
+            </StackPane>
          </children>
-      </Pane>
-      <Pane layoutX="129.0" prefHeight="52.0" prefWidth="651.0" style="-fx-background-color: black;">
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="-1.0" prefHeight="53.0" prefWidth="153.0" text="Dashoard" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="9.0" text="Dashboard" textFill="WHITE">
                <font>
-                  <Font size="36.0" />
+                  <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-         </children></Pane>
-      <StackPane fx:id="pane" layoutX="129.0" layoutY="52.0" prefHeight="348.0" prefWidth="651.0">
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="348.0" prefWidth="129.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="recPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
-            <AnchorPane fx:id="eventPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
-            <AnchorPane fx:id="rankingPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
-         </children></StackPane>
-   </children>
-</AnchorPane>
+            <VBox layoutX="15.0" layoutY="13.0" prefHeight="345.0" prefWidth="129.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="reclamationBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Reclamation" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Events" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="rankingBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Ranking" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="teamsBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Teams" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="msgBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Messages" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="productBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Products" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
