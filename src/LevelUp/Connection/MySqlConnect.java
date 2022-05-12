@@ -140,6 +140,26 @@ public class MySqlConnect {
         return list;
     }
 
+    public static ObservableList<LigneCommande> getLigneCommande(){
+        Connection conn = ConnectDb();
+        ObservableList<LigneCommande> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from ligne_commande");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                LigneCommande lc = new LigneCommande();
+                lc.setId(rs.getInt(1));
+                lc.setIdProduit(rs.getInt(2));
+                lc.setQuantite(rs.getInt(3));
+                lc.setIdCommande(rs.getInt(4));
+                list.add(lc);
+                System.out.println(lc);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static ObservableList<Commande> getDataCommandes(){
         Connection conn = ConnectDb();
         ObservableList<Commande> list = FXCollections.observableArrayList();

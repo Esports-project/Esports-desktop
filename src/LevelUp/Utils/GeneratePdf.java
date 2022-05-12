@@ -46,7 +46,6 @@ public class GeneratePdf {
                     PdfPCell c6=new PdfPCell(new Phrase(""+ligneCommande.getIdCommande()));
                     table.addCell(c6);
                 }}
-
             document.add(paragraph);
            // document.add(img);
             document.add(price);

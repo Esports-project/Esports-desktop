@@ -37,6 +37,9 @@ public class DashboardController implements Initializable {
     @FXML
     private Button productBtn;
 
+    @FXML
+    private Button gameBtn;
+
 
 
 
@@ -55,6 +58,9 @@ public class DashboardController implements Initializable {
 
     @FXML
     private AnchorPane msgPane;
+
+    @FXML
+    private AnchorPane gamePane;
 
     @FXML
     private AnchorPane productPane;
@@ -104,6 +110,13 @@ public class DashboardController implements Initializable {
             AnchorPane.setRightAnchor(prpage, 10.0);
             productPane.getChildren().setAll(prpage);
 
+            AnchorPane gamepage = FXMLLoader.load(getClass().getResource("../storeScreen/store-dashboard.fxml"));
+            AnchorPane.setTopAnchor(gamepage, 10.0);
+            AnchorPane.setBottomAnchor(gamepage, 10.0);
+            AnchorPane.setLeftAnchor(gamepage, 10.0);
+            AnchorPane.setRightAnchor(gamepage, 10.0);
+            gamePane.getChildren().setAll(gamepage);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -127,6 +140,9 @@ public class DashboardController implements Initializable {
         }
         if(e.getSource() == productBtn){
             productPane.toFront();
+        }
+        if(e.getSource() == gameBtn){
+            gamePane.toFront();
         }
     }
 }

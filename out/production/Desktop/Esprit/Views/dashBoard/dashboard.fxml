@@ -21,6 +21,7 @@
                   <AnchorPane fx:id="teamsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
                   <AnchorPane fx:id="msgPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
                   <AnchorPane fx:id="productPane" prefHeight="348.0" prefWidth="557.0" style="-fx-background-color: white;" />
+                  <AnchorPane fx:id="gamePane" prefHeight="348.0" prefWidth="557.0" style="-fx-background-color: white;" />
                </children>
             </StackPane>
          </children>
@@ -68,6 +69,11 @@
                      </font>
                   </Button>
                   <Button fx:id="productBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Products" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="gameBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Games" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

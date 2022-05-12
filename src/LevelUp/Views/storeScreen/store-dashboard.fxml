@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -13,6 +14,7 @@
          <children>
             <TableView fx:id="tableView" editable="true" prefHeight="348.0" prefWidth="461.0" HBox.hgrow="ALWAYS">
                <columns>
+                  <TableColumn fx:id="colId" prefWidth="75.0" text="id" />
                   <TableColumn fx:id="colNom" prefWidth="109.0" text="nom" />
                   <TableColumn fx:id="colActive" prefWidth="48.0" text="active" />
                   <TableColumn fx:id="colImage" prefWidth="60.0" text="image" />
@@ -24,7 +26,35 @@
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
             </TableView>
+            <VBox HBox.hgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="lcTableview" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="lcColId" prefWidth="43.0" text="id" />
+                        <TableColumn fx:id="lcColIdp" prefWidth="30.0" text="p_id" />
+                        <TableColumn fx:id="lcColIdc" prefWidth="191.0" text="c_id" />
+                    </columns>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox>
+                     <children>
+                        <Button maxWidth="10000.0" mnemonicParsing="false" onAction="#deleteCommande" prefHeight="25.0" text="Delete Commande" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </VBox>
             <VBox prefHeight="348.0" prefWidth="188.0">
                <children>
                   <Label text="Product name" />
@@ -42,7 +72,12 @@
                   <Label text="Image" />
                   <Button fx:id="imageBtn" mnemonicParsing="false" onAction="#ajoutImage" prefHeight="25.0" prefWidth="211.0" text="Add image" />
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
-                  <Button fx:id="submit" mnemonicParsing="false" onAction="#ajoutProduit" prefHeight="25.0" prefWidth="197.0" text="Add product" />
+                  <HBox>
+                     <children>
+                        <Button fx:id="submit" mnemonicParsing="false" onAction="#ajoutProduit" prefHeight="25.0" prefWidth="97.0" text="Add product" />
+                        <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deleteProduit" prefHeight="25.0" prefWidth="106.0" text="Delete" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
                </children></VBox>
          </children>
       </HBox>

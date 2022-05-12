@@ -49,6 +49,9 @@ public class HomeController implements Initializable {
     private Button msgBtn;
 
     @FXML
+    private Button gameBtn;
+
+    @FXML
     private AnchorPane reclamationPane;
 
     @FXML
@@ -68,6 +71,9 @@ public class HomeController implements Initializable {
 
     @FXML
     private AnchorPane teamsPane;
+
+    @FXML
+    private AnchorPane gamePane;
 
     @FXML
     private Pane homePane;
@@ -99,6 +105,9 @@ public class HomeController implements Initializable {
         if(actionEvent.getSource() == msgBtn){
             messagePane.toFront();
         }
+        if(actionEvent.getSource() == gameBtn){
+            gamePane.toFront();
+        }
 
         if (actionEvent.getSource() == dashBoardBtn){
             try {
@@ -122,6 +131,8 @@ public class HomeController implements Initializable {
             Parent rankPage = FXMLLoader.load(getClass().getResource("../rankingScreen/ranking-view.fxml"));
             rankingPane.getChildren().add(rankPage);
 
+            Parent gamePage = FXMLLoader.load(getClass().getResource("../gameScreen/game-view.fxml"));
+            gamePane.getChildren().add(gamePage);
 
             Parent eventPage = FXMLLoader.load(getClass().getResource("../eventScreen/event-view.fxml"));
             eventPane.getChildren().add(eventPage);
@@ -142,8 +153,6 @@ public class HomeController implements Initializable {
 
             Parent teamsPage = FXMLLoader.load(getClass().getResource("../teamsScreen/teams-view.fxml"));
             teamsPane.getChildren().add(teamsPage);
-
-
 
 
             homePane.toFront();

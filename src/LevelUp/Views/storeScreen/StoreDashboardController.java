@@ -1,8 +1,13 @@
 package Esprit.Views.storeScreen;
 
 import Esprit.Connection.MySqlConnect;
+import Esprit.Entities.Commande;
+import Esprit.Entities.LigneCommande;
 import Esprit.Entities.Produit;
+import Esprit.Services.ServiceLigneCommande;
 import Esprit.Services.ServiceProduit;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +51,9 @@ public class StoreDashboardController implements Initializable {
     private Button imageBtn;
 
     @FXML
+    private Button deleteBtn;
+
+    @FXML
     private Button submit;
 
     @FXML
@@ -72,16 +80,31 @@ public class StoreDashboardController implements Initializable {
     @FXML
     private TableColumn<Produit, Float> comSolde;
 
+    @FXML
+    private TableColumn<Produit, Integer> colId;
+
+    @FXML
+    private TableView<LigneCommande> lcTableview;
+
+    @FXML
+    private TableColumn lcColId;
+
+    @FXML
+    private TableColumn lcColIdp;
+
+    @FXML
+    private TableColumn lcColIdc;
+
     private String imageFile;
 
+
+
     ObservableList<Produit> listM;
-    int index1 = -1;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
+    ObservableList<LigneCommande> listLc;
+
 
     public void updateTable() {
-
+        colId.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("id"));
         colNom.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom"));
         colActive.setCellValueFactory(new PropertyValueFactory<Produit, String>("active"));
         colImage.setCellValueFactory(new PropertyValueFactory<Produit, String>("image"));
@@ -93,9 +116,28 @@ public class StoreDashboardController implements Initializable {
         tableView.setItems(listM);
     }
 
+    public void updateTableLc(){
+        lcColId.setCellValueFactory(new PropertyValueFactory("id"));
+        lcColIdp.setCellValueFactory(new PropertyValueFactory("idProduit"));
+        lcColIdc.setCellValueFactory(new PropertyValueFactory("idCommande"));
+        listLc = MySqlConnect.getLigneCommande();
+        lcTableview.setItems(listLc);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        price.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d")) {
+                    price.setText(newValue.replaceAll("\\D", ""));
+                }
+
+            }
+        });
         updateTable();
+        updateTableLc();
     }
 
     public void ajoutImage(ActionEvent e){
@@ -106,6 +148,22 @@ public class StoreDashboardController implements Initializable {
             imageFile = f.getAbsolutePath();
         }
     }
+
+    public  void deleteCommande(ActionEvent e){
+        ServiceLigneCommande ligneCommande = new ServiceLigneCommande();
+        LigneCommande lc = lcTableview.getSelectionModel().getSelectedItem();
+        ligneCommande.deleteLigneCommande(lc);
+        updateTableLc();
+    }
+
+    public  void deleteProduit(ActionEvent e){
+        ServiceProduit serviceProduit = new ServiceProduit();
+        Produit prod = tableView.getSelectionModel().getSelectedItem();
+        serviceProduit.deleteProduit(prod);
+        updateTable();
+    }
+
+
 
     public void ajoutProduit(ActionEvent e){
         ServiceProduit sr = new ServiceProduit();
