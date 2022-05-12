@@ -110,7 +110,7 @@ public class RankingDashboardController implements Initializable {
                     evenementId
             ));
 
-            rootPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("ranking-dashboard.fxml")));
+            updateTable();
         }
     }
 

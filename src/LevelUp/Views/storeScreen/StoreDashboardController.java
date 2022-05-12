@@ -22,6 +22,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -55,6 +56,9 @@ public class StoreDashboardController implements Initializable {
 
     @FXML
     private Button submit;
+
+    @FXML
+    private Button updateProd;
 
     @FXML
     private TableView<Produit> tableView;
@@ -97,7 +101,8 @@ public class StoreDashboardController implements Initializable {
 
     private String imageFile;
 
-
+    @FXML
+    private Button editer;
 
     ObservableList<Produit> listM;
     ObservableList<LigneCommande> listLc;
@@ -126,6 +131,7 @@ public class StoreDashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        updateProd.setVisible(false);
         price.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -158,6 +164,20 @@ public class StoreDashboardController implements Initializable {
 
         updateTable();
         updateTableLc();
+
+        editer.setOnAction(e -> {
+            Produit prod = tableView.getSelectionModel().getSelectedItem();
+            updateProd.setVisible(true);
+            submit.setVisible(false);
+            ref.setText(prod.getReferance());
+            //textImg.setText(prod.getImage());
+            quantity.setText(String.valueOf(prod.getQuantity()));
+            productName.setText(prod.getNom());
+            description.setText(prod.getDescription());
+            price.setText(String.valueOf(prod.getPrice()));
+            solde.setText(String.valueOf(prod.getSolde()));
+        });
+
     }
 
     public void ajoutImage(ActionEvent e){
@@ -200,5 +220,44 @@ public class StoreDashboardController implements Initializable {
         sr.addProduit(pr);
         tableView.setItems(listM);
         updateTable();
+    }
+
+    @FXML
+    public void updateProd(ActionEvent actionEvent) throws SQLException {
+        ServiceProduit serviceProduit = new ServiceProduit();
+        Produit prod = tableView.getSelectionModel().getSelectedItem();
+        if (actionEvent.getSource() == updateProd) {
+            boolean active = true;
+            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            String nom = productName.getText();
+            String des = description.getText();
+            int quan = Integer.parseInt(quantity.getText());
+            float prix = Float.parseFloat(price.getText());
+            float discount = Float.parseFloat(solde.getText());
+            String refe = ref.getText();
+            prod.setQuantity(quan);
+            prod.setNom(nom);
+            prod.setPrice(prix);
+            prod.setSolde(discount);
+            prod.setReferance(refe);
+            prod.setUpdatedAt(date);
+            if(imageFile != null) prod.setImage(imageFile);
+            prod.setActive(true);
+            serviceProduit.editProduit(prod);
+            tableView.setItems(listM);
+            updateProd.setVisible(false);
+            submit.setVisible(true);
+            clearTexts();
+            updateTable();
+        }
+    }
+
+    void clearTexts(){
+        ref.clear();
+        quantity.clear();
+        productName.clear();
+        description.clear();
+        price.clear();
+        solde.clear();
     }
 }

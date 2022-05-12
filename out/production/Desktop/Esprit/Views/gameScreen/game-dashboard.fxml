@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootpane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.gameScreen.GameDashboardController">
+<AnchorPane fx:id="rootpane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.gameScreen.GameDashboardController">
    <children>
       <HBox layoutX="38.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -39,10 +39,16 @@
                         <Label text="Description" />
                         <TextArea fx:id="description" prefHeight="200.0" prefWidth="200.0" />
                         <Separator orientation="VERTICAL" prefHeight="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="addBtn" maxWidth="100000.0" mnemonicParsing="false" onAction="#addGame" text="Add Game" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="updateGame" mnemonicParsing="false" onAction="#updateGame" prefHeight="25.0" prefWidth="94.0" text="Update Game" />
+                           </children>
+                        </HBox>
                         <HBox prefHeight="70.0" prefWidth="200.0">
                            <children>
                               <Button fx:id="deleteBtn" maxWidth="100000.0" mnemonicParsing="false" onAction="#deleteGame" text="Delete" HBox.hgrow="ALWAYS" />
-                              <Button fx:id="addBtn" maxWidth="100000.0" mnemonicParsing="false" onAction="#addGame" text="Add" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="editer" mnemonicParsing="false" onAction="#edited" prefHeight="25.0" prefWidth="94.0" text="Update" />
                            </children>
                         </HBox>
                      </children>

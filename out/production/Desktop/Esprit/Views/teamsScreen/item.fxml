@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.teamsScreen.ItemController">
    <children>
       <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="67.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-            <Label prefHeight="61.0" text="eeeeeeeeeeeeeeeeeeeeeeeee" HBox.hgrow="ALWAYS">
+            <Label fx:id="name" prefHeight="61.0" text="eeeeeeeeeeeeeeeeeeeeeeeee" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>

@@ -18,13 +18,21 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class GameDashboardController implements Initializable {
     @FXML
     private AnchorPane rootpane;
+
+    @FXML
+    private Button editer;
+
+    @FXML
+    private Button updateGame;
 
     @FXML
     private TextField name;
@@ -53,8 +61,16 @@ public class GameDashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        updateGame.setVisible(false);
         updateTable();
+
+        editer.setOnAction(e -> {
+            Games games = tableView.getSelectionModel().getSelectedItem();
+            updateGame.setVisible(true);
+            addBtn.setVisible(false);
+            name.setText(games.getNom());
+            description.setText(games.getDescription());
+        });
     }
 
     public void updateTable(){
@@ -87,6 +103,32 @@ public class GameDashboardController implements Initializable {
         Games game = tableView.getSelectionModel().getSelectedItem();
         games.deleteGame(game);
         updateTable();
+    }
+
+    @FXML
+    public void updateGame(ActionEvent actionEvent) throws SQLException {
+        ObservableList<Games> listM;
+        ServiceGames serviceGames = new ServiceGames();
+        Games games = tableView.getSelectionModel().getSelectedItem();
+        if (actionEvent.getSource() == updateGame) {
+            boolean active = true;
+            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            String nom = name.getText();
+            String des = description.getText();
+            games.setNom(nom);
+            games.setDescription(des);
+            serviceGames.editGame(games);
+            //tableView.setItems(listM);
+            updateGame.setVisible(false);
+            addBtn.setVisible(true);
+            clearTexts();
+            updateTable();
+        }
+    }
+
+    void clearTexts(){
+        name.clear();
+        description.clear();
     }
 
 }

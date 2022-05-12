@@ -2,8 +2,10 @@ package Esprit.Views.teamsScreen;
 
 
 import Esprit.Connection.MySqlConnect;
+import Esprit.Entities.Classement;
 import Esprit.Entities.Equipes;
 import Esprit.Entities.Reclamation;
+import Esprit.Services.ServiceClassement;
 import Esprit.Services.ServiceEquipes;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,8 +42,10 @@ public class TeamsDashboardController implements Initializable {
     @FXML
     private Button sendBtn;
 
+
+
     @FXML
-    private TableView tableView;
+    private TableView<Equipes> tableView;
 
     @FXML
     private TableColumn colId;
@@ -50,10 +54,7 @@ public class TeamsDashboardController implements Initializable {
     private TableColumn colNom;
 
     ObservableList<Equipes> listM;
-    int index1 = -1;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
+
 
      @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -61,8 +62,13 @@ public class TeamsDashboardController implements Initializable {
 
      }
 
+    public  void deleteTeam(ActionEvent e){
+        ServiceEquipes se = new ServiceEquipes();
+        Equipes c = tableView.getSelectionModel().getSelectedItem();
+        se.supprimerEquipe(c);
+        updateTable();
+    }
     public void updateTable() {
-
         colId.setCellValueFactory(new PropertyValueFactory<Equipes, Integer>("id"));
         colNom.setCellValueFactory(new PropertyValueFactory<Equipes, String>("nom"));
         listM = MySqlConnect.getDataEquipes();
@@ -75,7 +81,8 @@ public class TeamsDashboardController implements Initializable {
              seq.ajoutEquipe(new Equipes(
                      nom.getText()
              ));
+             updateTable();
          }
-         rootPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("teams-dashboard.fxml")));
+
      }
 }
