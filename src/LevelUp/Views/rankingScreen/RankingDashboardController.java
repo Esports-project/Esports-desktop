@@ -2,10 +2,12 @@ package Esprit.Views.rankingScreen;
 
 import Esprit.Connection.MySqlConnect;
 import Esprit.Entities.Classement;
+import Esprit.Entities.Games;
 import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceClassement;
 import Esprit.Services.ServiceEquipes;
 import Esprit.Services.ServiceEvenements;
+import Esprit.Services.ServiceGames;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +35,7 @@ public class RankingDashboardController implements Initializable {
     private TextField rangArea;
 
     @FXML
-    private TableView tableView;
+    private TableView<Classement> tableView;
 
     @FXML
     private TableColumn colId;
@@ -60,10 +62,7 @@ public class RankingDashboardController implements Initializable {
     private Button sendBtn;
 
     ObservableList<Classement> listM;
-    int index1 = -1;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -113,6 +112,13 @@ public class RankingDashboardController implements Initializable {
 
             rootPane.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("ranking-dashboard.fxml")));
         }
+    }
+
+    public  void deleteRanking(ActionEvent e){
+        ServiceClassement cl = new ServiceClassement();
+        Classement c = tableView.getSelectionModel().getSelectedItem();
+        cl.DeleteClassement(c.getId());
+        updateTable();
     }
 
 

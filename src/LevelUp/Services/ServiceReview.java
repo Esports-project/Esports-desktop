@@ -1,6 +1,7 @@
 package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
+import Esprit.Entities.Evenement;
 import Esprit.Entities.Reclamation;
 import Esprit.Entities.Review;
 
@@ -14,6 +15,10 @@ public class ServiceReview {
     private Connection cnx;
 
     private PreparedStatement ste;
+
+    public ServiceReview() {
+        cnx = MyConnection.getInstance().getConnection();
+    }
 
     public void addReview(Review r){
         try {
@@ -54,6 +59,30 @@ public class ServiceReview {
         return myList;
 
     }
+
+    public List<Integer> readReviewById(int id) {
+        List<Integer> list = new ArrayList<Integer>();
+        try {
+            String req = "SELECT * FROM review WHERE jeux_id_id=?";
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+
+            while (rs.next()) {
+
+                list.add(rs.getInt("note"))  ;
+
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+
+
 
     /* ----------------- Update ----------------- */
     public void editReview(Review r)  {

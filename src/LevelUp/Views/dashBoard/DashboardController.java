@@ -110,7 +110,7 @@ public class DashboardController implements Initializable {
             AnchorPane.setRightAnchor(prpage, 10.0);
             productPane.getChildren().setAll(prpage);
 
-            AnchorPane gamepage = FXMLLoader.load(getClass().getResource("../storeScreen/store-dashboard.fxml"));
+            AnchorPane gamepage = FXMLLoader.load(getClass().getResource("../gameScreen/game-dashboard.fxml"));
             AnchorPane.setTopAnchor(gamepage, 10.0);
             AnchorPane.setBottomAnchor(gamepage, 10.0);
             AnchorPane.setLeftAnchor(gamepage, 10.0);

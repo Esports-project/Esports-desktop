@@ -2,8 +2,10 @@ package Esprit.Views.eventScreen;
 
 import Esprit.Connection.MySqlConnect;
 import Esprit.Entities.Evenement;
+import Esprit.Entities.Games;
 import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceEvenements;
+import Esprit.Services.ServiceGames;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +35,7 @@ import java.util.ResourceBundle;
 public class EventDashboardController implements Initializable {
 
     @FXML
-    private TableView tableView;
+    private TableView<Evenement> tableView;
 
     @FXML
     private TableColumn colId;
@@ -120,6 +122,14 @@ public class EventDashboardController implements Initializable {
                 sqlDate
         );
         evenements.createEvenement(evenement);
+        updateTable();
+    }
+
+    public  void deleteEvent(ActionEvent e){
+        ServiceEvenements se = new ServiceEvenements();
+        Evenement ev = tableView.getSelectionModel().getSelectedItem();
+        se.deleteEvenement(ev);
+        updateTable();
     }
 
 

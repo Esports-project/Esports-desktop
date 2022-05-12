@@ -58,10 +58,7 @@ public class RDashboardController implements Initializable {
     public Pane rootPane;
 
     ObservableList<Reclamation> listM;
-    int index1 = -1;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
+
 
 
     @Override

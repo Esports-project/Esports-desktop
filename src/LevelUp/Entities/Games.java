@@ -19,6 +19,10 @@ public class Games {
         this.id = id;
     }
 
+    public void iksdee(String x){
+        System.out.println(x);
+    }
+
     //Complete constructor
     public Games(Integer id, String nom, String description) {
         this.id = id;

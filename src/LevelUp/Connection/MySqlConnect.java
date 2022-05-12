@@ -160,6 +160,26 @@ public class MySqlConnect {
         return list;
     }
 
+    public static ObservableList<Games> getGames(){
+        Connection conn = ConnectDb();
+        ObservableList<Games> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from jeux");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Games g = new Games();
+                g.setId(rs.getInt(1));
+                g.setNom(rs.getString(2));
+                g.setDescription(rs.getString(3));
+
+                list.add(g);
+
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static ObservableList<Commande> getDataCommandes(){
         Connection conn = ConnectDb();
         ObservableList<Commande> list = FXCollections.observableArrayList();
