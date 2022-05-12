@@ -128,14 +128,34 @@ public class StoreDashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         price.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d")) {
-                    price.setText(newValue.replaceAll("\\D", ""));
-                }
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    price.setText(oldValue);
+                }
             }
         });
+
+        solde.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    solde.setText(oldValue);
+                }
+            }
+        });
+
+        quantity.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if (!newValue.matches("\\d")) {
+                    quantity.setText(oldValue);
+                }
+            }
+        });
+
         updateTable();
         updateTableLc();
     }
@@ -143,7 +163,6 @@ public class StoreDashboardController implements Initializable {
     public void ajoutImage(ActionEvent e){
         FileChooser filechooser = new FileChooser();
         File f = filechooser.showOpenDialog(null);
-
         if(f != null){
             imageFile = f.getAbsolutePath();
         }

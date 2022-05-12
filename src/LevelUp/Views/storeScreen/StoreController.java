@@ -125,7 +125,7 @@ public class StoreController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         produits.addAll(getData());
         if (produits.size() > 0) {
-            setChosenFruit(produits.get(0));
+           // setChosenFruit(produits.get(0));
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Produit produit) {
@@ -137,30 +137,33 @@ public class StoreController implements Initializable{
         int row = 1;
         try {
             for (int i = 0; i < produits.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
+               if(produits.get(i).getQuantity() > 0){
+                   FXMLLoader fxmlLoader = new FXMLLoader();
+                   fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                   AnchorPane anchorPane = fxmlLoader.load();
 
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setData(produits.get(i),myListener);
+                   ItemController itemController = fxmlLoader.getController();
+                   itemController.setData(produits.get(i),myListener);
 
-                if (column == 3) {
-                    column = 0;
-                    row++;
-                }
+                   if (column == 3) {
+                       column = 0;
+                       row++;
+                   }
 
-                grid.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
-                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid.setMaxWidth(Region.USE_PREF_SIZE);
+                   grid.add(anchorPane, column++, row); //(child,column,row)
+                   //set grid width
+                   grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                   grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                   grid.setMaxWidth(Region.USE_PREF_SIZE);
 
-                //set grid height
-                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid.setMaxHeight(Region.USE_PREF_SIZE);
+                   //set grid height
+                   grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                   grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                   grid.setMaxHeight(Region.USE_PREF_SIZE);
 
-                GridPane.setMargin(anchorPane, new Insets(10));
+                   GridPane.setMargin(anchorPane, new Insets(10));
+               }
+
             }
         } catch (IOException e) {
             e.printStackTrace();

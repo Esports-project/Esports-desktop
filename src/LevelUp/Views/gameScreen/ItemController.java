@@ -1,17 +1,27 @@
 package Esprit.Views.gameScreen;
 
+
+import Esprit.Entities.Games;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import org.controlsfx.control.Rating;
+
 
 public class ItemController {
 
-    @FXML
-    private ImageView image;
+
 
     @FXML
     private Label title;
 
     @FXML
-    private Label description;
+    private Label description;;
+
+    @FXML
+    private Rating rating;
+
+    public void setData(Games games) {
+        title.setText(games.getNom());
+        description.setText(games.getDescription());
+    }
 }
