@@ -4,6 +4,7 @@ import Esprit.Connection.MySqlConnect;
 import Esprit.Entities.Blog;
 import Esprit.Entities.Evenement;
 import Esprit.Entities.Games;
+import Esprit.Entities.Produit;
 import Esprit.Services.ServiceBlog;
 import Esprit.Services.ServiceEvenements;
 import Esprit.Services.ServiceGames;
@@ -23,6 +24,8 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -36,6 +39,12 @@ public class DashboardBlog implements Initializable {
 
     @FXML
     private TableColumn colTitre;
+
+    @FXML
+    private Button editer;
+
+    @FXML
+    private Button updateBlog;
 
     @FXML
     private TableColumn colId;
@@ -70,6 +79,17 @@ public class DashboardBlog implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     updateTable();
+
+    updateBlog.setVisible(false);
+
+        editer.setOnAction(e -> {
+            Blog blog = tableView.getSelectionModel().getSelectedItem();
+            updateBlog.setVisible(true);
+            ajoutBtn.setVisible(false);
+            titre.setText(blog.getTitre());
+            contenu.setText(String.valueOf(blog.getContenu()));
+        });
+
     }
     ObservableList<Blog> listM;
     public void updateTable(){
@@ -82,10 +102,39 @@ public class DashboardBlog implements Initializable {
 
         listM = MySqlConnect.getBlogs();
         tableView.setItems(listM);
+
+
+    }
+
+    @FXML
+    public void updateBloger(ActionEvent actionEvent) throws SQLException {
+        ServiceBlog serviceBlog = new ServiceBlog();
+        Blog blog = tableView.getSelectionModel().getSelectedItem();
+        if (actionEvent.getSource() == updateBlog) {
+            String name = titre.getText();
+            String des = contenu.getText();
+            Date date = new Date(Calendar.getInstance().getTime().getTime());
+            blog.setTitre(name);
+            blog.setContenu(des);
+            blog.setPost_date(date);
+            if(imageFile != null) blog.setImage(imageFile);
+            blog.setPost_date(date);
+            serviceBlog.modifyBlog(blog);
+            tableView.setItems(listM);
+            updateBlog.setVisible(false);
+            ajoutBtn.setVisible(true);
+            clearTexts();
+            updateTable();
+        }
+    }
+
+    void clearTexts(){
+        titre.clear();
+        contenu.clear();
     }
 
     public void ajoutBlog(ActionEvent e){
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Date date = new Date(Calendar.getInstance().getTime().getTime());
         ServiceBlog blog = new ServiceBlog();
         Blog b = new Blog(
                 titre.getText(),
