@@ -33,7 +33,7 @@
                   <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TextArea fx:id="replyField" prefHeight="124.0" prefWidth="200.0" />
-                        <Button fx:id="replyBtn" maxWidth="50000.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0" text="Reply" />
+                        <Button fx:id="replyBtn" maxWidth="50000.0" mnemonicParsing="false" onAction="#replyRec" prefHeight="25.0" prefWidth="300.0" text="Reply" />
                         <Label text="subject" />
                         <TextField fx:id="subject" />
                         <Label text="email" />

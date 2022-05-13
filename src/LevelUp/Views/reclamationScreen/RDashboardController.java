@@ -5,13 +5,17 @@ import Esprit.Entities.Classement;
 import Esprit.Entities.Produit;
 import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceClassement;
+import Esprit.Utils.MailUtil;
+import Esprit.Utils.ReplyMail;
 import Esprit.Views.eventScreen.ItemController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +32,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
+import javax.mail.MessagingException;
 
 public class RDashboardController implements Initializable {
 
@@ -111,20 +117,31 @@ public class RDashboardController implements Initializable {
     }
 
 
-    public void deleteRec(){
+    public void deleteRec(javafx.event.ActionEvent e){
         ServiceReclamation sr = new ServiceReclamation();
         Reclamation c = tableView.getSelectionModel().getSelectedItem();
         sr.deleteReclamation(c);
         updateTable();
     }
 
-    public void replyRec(){
+    public void replyRec(ActionEvent e) throws MessagingException {
         ServiceReclamation sr = new ServiceReclamation();
         Reclamation c = tableView.getSelectionModel().getSelectedItem();
-
+        ReplyMail.sendMail(c.getEmail(),c,replyField.getText());
+        sr.editReclamation(new Reclamation(
+                c.getId(),
+                c.getUser_id(),
+                c.getSubject(),
+                c.getEmail(),
+                c.getDescription(),
+                c.getDate(),
+                1,
+                c.getCategory_id()
+        ));
+        updateTable();
     }
 
-    public void editRec(){
+    public void editRec(ActionEvent e){
         ServiceReclamation sr = new ServiceReclamation();
         Reclamation c = tableView.getSelectionModel().getSelectedItem();
         sr.editReclamation(new Reclamation(
