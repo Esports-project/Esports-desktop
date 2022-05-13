@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.blogScreen.DashboardBlog">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.blogScreen.DashboardBlog">
    <children>
       <HBox layoutX="122.0" layoutY="40.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="400.0" prefWidth="405.0">
+            <TableView fx:id="tableView" prefHeight="400.0" prefWidth="405.0" HBox.hgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="colId" prefWidth="75.0" text="id" />
                 <TableColumn fx:id="colTitre" prefWidth="75.0" text="titre" />
@@ -27,7 +27,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <VBox layoutX="70.0" layoutY="26.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>

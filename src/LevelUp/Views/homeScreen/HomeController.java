@@ -126,21 +126,45 @@ public class HomeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             Parent recPage = FXMLLoader.load(getClass().getResource("../reclamationScreen/reclamation-view.fxml"));
+            AnchorPane.setTopAnchor(recPage, 10.0);
+            AnchorPane.setBottomAnchor(recPage, 10.0);
+            AnchorPane.setLeftAnchor(recPage, 10.0);
+            AnchorPane.setRightAnchor(recPage, 10.0);
             reclamationPane.getChildren().add(recPage);
 
             Parent rankPage = FXMLLoader.load(getClass().getResource("../rankingScreen/ranking-view.fxml"));
+            AnchorPane.setTopAnchor(rankPage, 10.0);
+            AnchorPane.setBottomAnchor(rankPage, 10.0);
+            AnchorPane.setLeftAnchor(rankPage, 10.0);
+            AnchorPane.setRightAnchor(rankPage, 10.0);
             rankingPane.getChildren().add(rankPage);
 
             Parent gamePage = FXMLLoader.load(getClass().getResource("../gameScreen/game-view.fxml"));
+            AnchorPane.setTopAnchor(gamePage, 10.0);
+            AnchorPane.setBottomAnchor(gamePage, 10.0);
+            AnchorPane.setLeftAnchor(gamePage, 10.0);
+            AnchorPane.setRightAnchor(gamePage, 10.0);
             gamePane.getChildren().add(gamePage);
 
             Parent eventPage = FXMLLoader.load(getClass().getResource("../eventScreen/event-view.fxml"));
+            AnchorPane.setTopAnchor(eventPage, 10.0);
+            AnchorPane.setBottomAnchor(eventPage, 10.0);
+            AnchorPane.setLeftAnchor(eventPage, 10.0);
+            AnchorPane.setRightAnchor(eventPage, 10.0);
             eventPane.getChildren().add(eventPage);
 
             Parent blogPage = FXMLLoader.load(getClass().getResource("../blogScreen/blog-view.fxml"));
+            AnchorPane.setTopAnchor(blogPage, 10.0);
+            AnchorPane.setBottomAnchor(blogPage, 10.0);
+            AnchorPane.setLeftAnchor(blogPage, 10.0);
+            AnchorPane.setRightAnchor(blogPage, 10.0);
             blogPane.getChildren().add(blogPage);
 
             Parent messagePage = FXMLLoader.load(getClass().getResource("../messageScreen/msg-view.fxml"));
+            AnchorPane.setTopAnchor(messagePage, 10.0);
+            AnchorPane.setBottomAnchor(messagePage, 10.0);
+            AnchorPane.setLeftAnchor(messagePage, 10.0);
+            AnchorPane.setRightAnchor(messagePage, 10.0);
             messagePane.getChildren().add(messagePage);
 
             AnchorPane storePage = FXMLLoader.load(getClass().getResource("../storeScreen/store-view.fxml"));
@@ -152,6 +176,10 @@ public class HomeController implements Initializable {
 
 
             Parent teamsPage = FXMLLoader.load(getClass().getResource("../teamsScreen/teams-view.fxml"));
+            AnchorPane.setTopAnchor(teamsPage, 10.0);
+            AnchorPane.setBottomAnchor(teamsPage, 10.0);
+            AnchorPane.setLeftAnchor(teamsPage, 10.0);
+            AnchorPane.setRightAnchor(teamsPage, 10.0);
             teamsPane.getChildren().add(teamsPage);
 
 
