@@ -2,7 +2,13 @@ package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
 import Esprit.Entities.Equipes;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +20,6 @@ public class ServiceEquipes {
 
     public  ServiceEquipes() { cnx = MyConnection.getInstance().getConnection();
     }
-
 
 
     public  void ajoutEquipe(Equipes e){

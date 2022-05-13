@@ -1,6 +1,7 @@
 package Esprit.Views.teamsScreen;
 
 import Esprit.Entities.Equipes;
+import Esprit.Services.ServiceGames;
 import Esprit.Utils.MyListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -26,5 +27,8 @@ public class ItemController {
         name.setText(eq.getNom());
         equipes = eq;
     }
+
+
+
 
 }

@@ -1,5 +1,7 @@
 package Esprit.Views.messageScreen;
 
+import Esprit.Entities.Messages;
+import Esprit.Services.ServiceMessage;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,6 +23,8 @@ import javafx.scene.text.TextFlow;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class MessageController implements Initializable {
@@ -60,6 +64,17 @@ public class MessageController implements Initializable {
         sendBtn.setOnAction(event -> {
             String messageToSend = textField.getText();
             if(!messageToSend.isEmpty()){
+                Date date = new Date(Calendar.getInstance().getTime().getTime());
+                ServiceMessage sm = new ServiceMessage();
+                Messages message = new Messages(
+                        0,
+                        0,
+                        messageToSend,
+                        date,
+                        0
+                );
+
+                sm.addMessage(message);
                 HBox hBox =new HBox();
                 hBox.setAlignment(Pos.CENTER_RIGHT);
                 hBox.setPadding(new Insets(5,5,5,10));

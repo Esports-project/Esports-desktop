@@ -34,6 +34,7 @@ public class Client {
     }
 
     public void receiveMessageFromServer(VBox vBox){
+
         new Thread(new Runnable() {
             @Override
             public void run() {

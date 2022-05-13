@@ -1,9 +1,13 @@
 package Esprit.Views.reclamationScreen;
 
 import Esprit.Connection.MySqlConnect;
+import Esprit.Entities.Classement;
 import Esprit.Entities.Produit;
 import Esprit.Entities.Reclamation;
+import Esprit.Services.ServiceClassement;
 import Esprit.Views.eventScreen.ItemController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +23,7 @@ import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
 import Esprit.Services.ServiceReclamation;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -59,16 +61,86 @@ public class RDashboardController implements Initializable {
 
     ObservableList<Reclamation> listM;
 
+    @FXML
+    private TextArea replyField;
+
+    @FXML
+    private Button replyBtn;
+
+    @FXML
+    private TextField subject;
+
+    @FXML
+    private TextField email;
+
+    @FXML
+    private TextField description;
+
+    @FXML
+    private TextField status;
+
+    @FXML
+    private Button deleteBtn;
+
+    @FXML
+    private Button editBtn;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        status.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
+                if (!newValue.matches("\\d")) {
+                    status.setText(oldValue);
+                }
+            }
+        });
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                email.setText(newSelection.getEmail());
+                subject.setText(newSelection.getSubject());
+                description.setText(newSelection.getDescription());
+                status.setText(newSelection.getStatus().toString());
+            }
+        });
+        updateTable();
+    }
+
+
+    public void deleteRec(){
+        ServiceReclamation sr = new ServiceReclamation();
+        Reclamation c = tableView.getSelectionModel().getSelectedItem();
+        sr.deleteReclamation(c);
+        updateTable();
+    }
+
+    public void replyRec(){
+        ServiceReclamation sr = new ServiceReclamation();
+        Reclamation c = tableView.getSelectionModel().getSelectedItem();
+
+    }
+
+    public void editRec(){
+        ServiceReclamation sr = new ServiceReclamation();
+        Reclamation c = tableView.getSelectionModel().getSelectedItem();
+        sr.editReclamation(new Reclamation(
+                c.getId(),
+                c.getUser_id(),
+                subject.getText(),
+                email.getText(),
+                description.getText(),
+                c.getDate(),
+                Integer.parseInt(status.getText()),
+                c.getCategory_id()
+        ));
         updateTable();
     }
 
     public void updateTable() {
-
         colID.setCellValueFactory(new PropertyValueFactory<Reclamation, Integer>("id"));
         colSubject.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("subject"));
         colEmail.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("email"));

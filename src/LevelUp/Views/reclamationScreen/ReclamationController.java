@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 
 import Esprit.Services.ServiceCategory;
 import Esprit.Services.ServiceReclamation;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.Calendar;
@@ -29,6 +30,8 @@ public class ReclamationController implements Initializable {
 
     @FXML
     private ComboBox articleArea;
+
+
 
 
     @Override

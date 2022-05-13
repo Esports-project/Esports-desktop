@@ -3,7 +3,9 @@ package Esprit.Views.gameScreen;
 
 import Esprit.Entities.Games;
 import Esprit.Entities.Review;
+import Esprit.Services.ServiceGames;
 import Esprit.Services.ServiceReview;
+import com.itextpdf.text.DocumentException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +18,8 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 
 
 public class ItemController {
@@ -75,5 +79,13 @@ public class ItemController {
                 avis
         );
     sr.addReview(r);
+    }
+
+    public void func() throws SQLException, DocumentException, FileNotFoundException {
+
+            ServiceGames tt = new ServiceGames();
+
+            tt.exportTable(g.getId());
+
     }
 }
