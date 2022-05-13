@@ -35,14 +35,14 @@
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="279.0" prefWidth="152.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" prefHeight="49.0" prefWidth="154.0">
                      <children>
-                        <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#handleCLick" prefHeight="30.0" text="Ajout Equipe" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="updateTeam" mnemonicParsing="false" onAction="#updateTeams" prefHeight="30.0" text="Update Equipe" />
+                        <Button fx:id="sendBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCLick" prefHeight="30.0" text="Ajout" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="updateTeam" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateTeams" prefHeight="30.0" text="Update" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#deleteTeam" text="Delete" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="editer" mnemonicParsing="false" text="Update" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteTeam" text="Delete" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="editer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Update" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
