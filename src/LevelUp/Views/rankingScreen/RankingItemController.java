@@ -22,6 +22,7 @@ public class RankingItemController {
     private Label rank;
 
 
+    // Fill card with data
     public void setData(Classement cls ){
         ServiceEvenements sev = new ServiceEvenements();
         ServiceEquipes seq = new ServiceEquipes();

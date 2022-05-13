@@ -20,16 +20,19 @@ public class RankingController implements Initializable {
     @FXML
     private Pane rankingPage;
 
+    // This function runs on startup
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         ServiceClassement sr = new ServiceClassement();
+        // Generating ranking card for each rank
         sr.readClassements().forEach(classement -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("ranking-item.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 RankingItemController itemController = fxmlLoader.getController();
+                // Filling each card with its data
                 itemController.setData(classement);
                 rankingList.getChildren().add(anchorPane);
 

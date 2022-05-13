@@ -72,6 +72,7 @@ public class RankingDashboardController implements Initializable {
     ObservableList<Classement> listM;
 
 
+    // This function runs on startup
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -87,9 +88,10 @@ public class RankingDashboardController implements Initializable {
             equipeList.getItems().addAll(e.getNom());
         });
 
+        // Update button invisible until clicked
         updateRank.setVisible(false);
         updateTable();
-
+        // On clicked turn button visible and fill textfields
         editer.setOnAction(e -> {
             Classement classement = tableView.getSelectionModel().getSelectedItem();
             updateRank.setVisible(true);

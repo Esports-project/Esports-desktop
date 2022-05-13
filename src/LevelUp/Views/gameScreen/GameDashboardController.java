@@ -59,11 +59,13 @@ public class GameDashboardController implements Initializable {
     private TableColumn<Games, String> colDesc;
 
 
+    // This function runs on startup
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateGame.setVisible(false);
         updateTable();
 
+        // On update button clicked, filling textfield with data to be modified
         editer.setOnAction(e -> {
             Games games = tableView.getSelectionModel().getSelectedItem();
             updateGame.setVisible(true);

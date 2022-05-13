@@ -65,6 +65,7 @@ public class TeamsDashboardController implements Initializable {
     ObservableList<Equipes> listM;
 
 
+    // this function runs on startup
      @Override
     public void initialize(URL location, ResourceBundle resources){
     updateTable();

@@ -41,6 +41,7 @@ public class ItemController {
 
     private Games g;
 
+    // Filling card with Data
     public void setData(Games games) {
         ServiceReview review = new ServiceReview();
 
@@ -81,6 +82,7 @@ public class ItemController {
     sr.addReview(r);
     }
 
+    // Generates pdf
     public void func() throws SQLException, DocumentException, FileNotFoundException {
 
             ServiceGames tt = new ServiceGames();

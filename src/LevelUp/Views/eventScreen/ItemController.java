@@ -26,6 +26,7 @@ public class ItemController {
     @FXML
     private ImageView imageView;
 
+    // Function responsible for filling card with data
     public void setData(Evenement evenement) {
         InputStream stream = null;
         title.setText(evenement.getNom());

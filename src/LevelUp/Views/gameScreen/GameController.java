@@ -21,9 +21,11 @@ public class GameController implements Initializable {
     @FXML
     private AnchorPane rootPane;
 
+    // This function runs on startup
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ServiceGames sg = new ServiceGames();
+        // Generates item card for each game
         sg.gameList().forEach(games -> {
             try{
                 FXMLLoader fxmlLoader = new FXMLLoader();

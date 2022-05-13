@@ -85,16 +85,15 @@ public class EventDashboardController implements Initializable {
     private Evenement ev;
 
     ObservableList<Evenement> listM;
-    int index1 = -1;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
 
+
+    // This function runs on startup
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     updateTable();
+    // Set update button invisible until clicked
         updateEvent.setVisible(false);
-
+    // On button clicked filling textfields with data to be modified
         editer.setOnAction(e -> {
             Evenement event = tableView.getSelectionModel().getSelectedItem();
             updateEvent.setVisible(true);
@@ -110,6 +109,7 @@ public class EventDashboardController implements Initializable {
     }
 
     public void updateTable() {
+        // Initializing data to each tableview cell
 
         colId.setCellValueFactory(new PropertyValueFactory<Evenement, Integer>("Id"));
         colNom.setCellValueFactory(new PropertyValueFactory<Evenement, String>("nom"));

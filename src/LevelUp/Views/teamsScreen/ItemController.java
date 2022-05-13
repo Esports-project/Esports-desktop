@@ -23,6 +23,7 @@ public class ItemController {
 
     private Equipes equipes;
 
+    // Fills card with data
     public void setData(Equipes eq){
         name.setText(eq.getNom());
         equipes = eq;

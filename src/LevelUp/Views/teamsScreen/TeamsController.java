@@ -18,15 +18,18 @@ public class TeamsController implements Initializable {
     @FXML
     private VBox teamsList;
 
+    // This function runs on startup
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ServiceEquipes se = new ServiceEquipes();
+        // For each equipe found generate card
         se.equipesList().forEach(equipe -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("item.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
+                // Fill card with data
                 itemController.setData(equipe);
                 teamsList.getChildren().add(anchorPane);
 
