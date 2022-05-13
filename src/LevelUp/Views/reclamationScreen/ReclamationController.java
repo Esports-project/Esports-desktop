@@ -100,7 +100,7 @@ public class ReclamationController implements Initializable {
             System.out.println(valId);
             sr.addReclamation(new Reclamation(  0,
                     subject,
-                    "email",
+                    emailArea.getText(),
                     content,
                     date,
                     0,
