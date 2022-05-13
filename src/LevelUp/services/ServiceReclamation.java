@@ -1,8 +1,7 @@
-package Esprit.services;
+package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
-import Esprit.entities.Produit;
-import Esprit.entities.Reclamation;
+import Esprit.Entities.Reclamation;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,12 +11,13 @@ import java.util.List;
 public class ServiceReclamation {
     private Connection cnx;
     private PreparedStatement ste;
-    Statement st;
-    ResultSet rs;
+
 
     public ServiceReclamation() {
         cnx = MyConnection.getInstance().getConnection();
     }
+
+
 
     /* ----------------- Create ----------------- */
     public void addReclamation(Reclamation r) {
@@ -33,7 +33,7 @@ public class ServiceReclamation {
             pst.setString(4, r.getDescription());
             pst.setDate(5, date);
             pst.setInt(6,0);
-            pst.setInt(7,0);
+            pst.setInt(7,r.getCategory_id());
 
             pst.executeUpdate();
             System.out.println(r);
@@ -70,7 +70,7 @@ public class ServiceReclamation {
     }
 
     /* ----------------- Update ----------------- */
-    public void editReclamation(Reclamation r) throws SQLException {
+    public void editReclamation(Reclamation r)  {
         String requete = "UPDATE reclamation SET user_id=?, sujet=? ,email=? ,description=?, status=?, category_id=? WHERE id=?";
         try {
             ste = cnx.prepareStatement(requete);

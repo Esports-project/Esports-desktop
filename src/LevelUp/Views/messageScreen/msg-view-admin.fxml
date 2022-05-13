@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="262.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.messageScreen.DashboardMessageController">
+   <children>
+      <HBox prefHeight="348.0" prefWidth="651.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane prefHeight="348.0" prefWidth="325.0">
+               <content>
+                  <VBox fx:id="eventList" prefHeight="348.0" prefWidth="337.0" />
+               </content>
+            </ScrollPane>
+            <AnchorPane style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+                           <content>
+                              <VBox fx:id="vBox" prefHeight="295.0" prefWidth="325.0" style="-fx-background-color: white;">
+                                 <padding>
+                                    <Insets top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <HBox>
+                           <children>
+                              <TextField fx:id="textField" prefHeight="46.0" prefWidth="258.0" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="sendBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="71.0" text="send" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

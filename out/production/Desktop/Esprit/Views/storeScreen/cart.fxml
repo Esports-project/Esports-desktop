@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPannel" prefHeight="469.0" prefWidth="636.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.storeScreen.CartController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox>
+               <children>
+                  <Label layoutX="14.0" layoutY="24.0" prefHeight="54.0" prefWidth="89.0" text="Cart" textFill="WHITE">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
+                  <Separator opacity="0.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="StoreButton" mnemonicParsing="false" onAction="#loadSecond" text="Back" />
+               </children>
+            </HBox>
+            <BorderPane VBox.vgrow="ALWAYS">
+               <left>
+                  <AnchorPane style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox layoutX="47.0" layoutY="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Separator opacity="0.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="0.0" VBox.vgrow="ALWAYS" />
+                              <VBox prefHeight="100.0" prefWidth="225.0" style="-fx-background-color: purple;">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="225.0">
+                                       <children>
+                                          <Label fx:id="fruitPriceLabel" text="ESM PRODUIT" />
+                                          <Separator opacity="0.0" HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="fruitNameLable" text="PRICE" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </Separator>
+                                    <HBox prefHeight="19.0">
+                                       <children>
+                                          <Separator opacity="0.0" HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="PasserCommande" alignment="CENTER" mnemonicParsing="false" onAction="#passerCommande" prefHeight="25.0" text="Passer Commande" HBox.hgrow="ALWAYS">
+                                             <HBox.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets left="30.0" right="30.0" />
+                                             </padding>
+                                          </Button>
+                                          <Separator opacity="0.0" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <Separator opacity="0.0" orientation="VERTICAL" VBox.vgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox layoutX="78.0" layoutY="108.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ScrollPane fx:id="scrollCart" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <GridPane fx:id="grid">
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

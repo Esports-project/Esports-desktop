@@ -1,7 +1,7 @@
-package Esprit.services;
+package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
-import Esprit.entities.Produit;
+import Esprit.Entities.Produit;
 import Esprit.entities.User;
 
 import java.sql.*;

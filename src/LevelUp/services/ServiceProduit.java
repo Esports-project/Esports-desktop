@@ -1,16 +1,14 @@
-package Esprit.services;
+package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
-import Esprit.entities.Produit;
+import Esprit.Entities.Produit;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ServiceProduit {
     private Connection cnx;
@@ -48,8 +46,8 @@ public class ServiceProduit {
     }
 
     /* ----------------- Read ----------------- */
-    public List<Produit> produitList() {
-        List<Produit> myList = new ArrayList<Produit>();
+    public ObservableList<Produit> produitList() {
+        ObservableList<Produit> myList = FXCollections.observableArrayList();
         String requete = "SELECT * from Produit";
         try {
             Statement st;
@@ -113,6 +111,72 @@ public class ServiceProduit {
             System.out.println("Product Deleted !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+        }
+    }
+
+    /* ----------------- Search ID ----------------- */
+    public Produit getProduitById(int id){
+        try {
+            Produit p = new Produit();
+            PreparedStatement myStmt = cnx.prepareStatement("SELECT * from produit where id=?");
+            myStmt.setInt(1, id);
+            ResultSet myRes = myStmt.executeQuery();
+            while (myRes.next()) {
+                p.setId(myRes.getInt("id"));
+                p.setNom(myRes.getString("nom"));
+                p.setQuantity(myRes.getInt("quantity"));
+                p.setPrice(myRes.getFloat("price"));
+                p.setDescription(myRes.getString("description"));
+                p.setImage(myRes.getString("image"));
+                p.setSolde(myRes.getFloat("solde"));
+                p.setActive(myRes.getBoolean("active"));
+                p.setReferance(myRes.getString("referance"));
+                p.setUpdatedAt(myRes.getDate("updated_at"));
+                return p;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /* ----------------- Search ID ----------------- */
+    public Produit getProduitByRef(String ref){
+        try {
+            Produit p = new Produit();
+            PreparedStatement myStmt = cnx.prepareStatement("SELECT * from produit where referance=?");
+            myStmt.setString(1, ref);
+            ResultSet myRes = myStmt.executeQuery();
+            while (myRes.next()) {
+                p.setId(myRes.getInt("id"));
+                p.setNom(myRes.getString("nom"));
+                p.setQuantity(myRes.getInt("quantity"));
+                p.setPrice(myRes.getFloat("price"));
+                p.setDescription(myRes.getString("description"));
+                p.setImage(myRes.getString("image"));
+                p.setSolde(myRes.getFloat("solde"));
+                p.setActive(myRes.getBoolean("active"));
+                p.setReferance(myRes.getString("referance"));
+                p.setUpdatedAt(myRes.getDate("updated_at"));
+                return p;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void reduceQuantityComm(Produit prod, int qte) throws SQLException {
+        String requete = "UPDATE produit SET quantity=? WHERE referance=?";
+        try {
+            ste = cnx.prepareStatement(requete);
+            ste.setInt(1, prod.getQuantity()-qte);
+            ste.setString(2, prod.getReferance());
+            ste.executeUpdate();
+            System.out.println("Produit Modfié !");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            System.out.println("Produit non Modfié !");
         }
     }
 }

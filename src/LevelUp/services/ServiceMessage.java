@@ -1,8 +1,7 @@
-package Esprit.services;
+package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
-import Esprit.entities.Messages;
-import Esprit.entities.Reclamation;
+import Esprit.Entities.Messages;
 
 import java.sql.*;
 import java.util.ArrayList;

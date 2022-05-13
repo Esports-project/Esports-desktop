@@ -1,8 +1,8 @@
-package Esprit.services;
+package Esprit.Services;
 
-import Esprit.entities.Panier;
-import Esprit.entities.Produit;
-import Esprit.entities.LigneCommande;
+import Esprit.Entities.Panier;
+import Esprit.Entities.Produit;
+import Esprit.Entities.LigneCommande;
 
 import Esprit.Connection.MyConnection;
 import java.sql.Connection;
