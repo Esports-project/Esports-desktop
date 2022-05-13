@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.rankingScreen.RankingDashboardController">
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.rankingScreen.RankingDashboardController">
     <children>
         <HBox prefHeight="348.0" prefWidth="651.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -40,10 +40,16 @@
                         <Label text="Evenement" />
                         <ComboBox fx:id="evenementList" prefWidth="150.0" />
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                              <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#handleClick" prefHeight="30.0" text="Ajout classement" />
+                        <Button fx:id="updateRank" mnemonicParsing="false" onAction="#updateRanked" prefHeight="30.0" prefWidth="97.0" text="Update Classement" />
+                     </children>
+                  </HBox>
                   <HBox>
                      <children>
-                        <Button maxWidth="10000.0" mnemonicParsing="false" onAction="#deleteRanking" text="Delete" HBox.hgrow="ALWAYS" />
-                              <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#handleClick" prefHeight="30.0" text="Ajout classement" />
+                        <Button maxWidth="10000.0" mnemonicParsing="false" onAction="#deleteRanking" prefHeight="25.0" prefWidth="97.0" text="Delete" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="editer" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Update" />
                      </children>
                   </HBox>
                     </children>

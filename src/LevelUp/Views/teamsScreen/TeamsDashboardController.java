@@ -4,9 +4,11 @@ package Esprit.Views.teamsScreen;
 import Esprit.Connection.MySqlConnect;
 import Esprit.Entities.Classement;
 import Esprit.Entities.Equipes;
+import Esprit.Entities.Games;
 import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceClassement;
 import Esprit.Services.ServiceEquipes;
+import Esprit.Services.ServiceGames;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +29,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -35,6 +39,11 @@ public class TeamsDashboardController implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private Button updateTeam;
+    @FXML
+    private Button editer;
+
 
     @FXML
     private TextField nom;
@@ -59,7 +68,13 @@ public class TeamsDashboardController implements Initializable {
      @Override
     public void initialize(URL location, ResourceBundle resources){
     updateTable();
-
+    updateTeam.setVisible(false);
+         editer.setOnAction(e -> {
+             Equipes equipes = tableView.getSelectionModel().getSelectedItem();
+             updateTeam.setVisible(true);
+             sendBtn.setVisible(false);
+             nom.setText(equipes.getNom());
+         });
      }
 
     public  void deleteTeam(ActionEvent e){
@@ -85,4 +100,25 @@ public class TeamsDashboardController implements Initializable {
          }
 
      }
+
+    @FXML
+    public void updateTeams(ActionEvent actionEvent) throws SQLException {
+        ObservableList<Games> listM;
+        ServiceEquipes serviceEquipes = new ServiceEquipes();
+        Equipes equipes = tableView.getSelectionModel().getSelectedItem();
+        if (actionEvent.getSource() == updateTeam) {
+            String name = nom.getText();
+            equipes.setNom(name);
+            serviceEquipes.modifierEquipe(equipes);
+            //tableView.setItems(listM);
+            updateTeam.setVisible(false);
+            sendBtn.setVisible(true);
+            clearTexts();
+            updateTable();
+        }
+    }
+
+    void clearTexts(){
+        nom.clear();
+    }
 }

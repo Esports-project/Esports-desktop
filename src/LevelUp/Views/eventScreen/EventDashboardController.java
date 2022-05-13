@@ -3,11 +3,14 @@ package Esprit.Views.eventScreen;
 import Esprit.Connection.MySqlConnect;
 import Esprit.Entities.Evenement;
 import Esprit.Entities.Games;
+import Esprit.Entities.Produit;
 import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceEvenements;
 import Esprit.Services.ServiceGames;
+import Esprit.Services.ServiceProduit;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,15 +24,13 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.sql.Date;
 
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class EventDashboardController implements Initializable {
@@ -39,6 +40,12 @@ public class EventDashboardController implements Initializable {
 
     @FXML
     private TableColumn colId;
+
+    @FXML
+    private Button updateEvent;
+
+    @FXML
+    private Button editer;
 
     @FXML
     private TableColumn colNom;
@@ -59,6 +66,9 @@ public class EventDashboardController implements Initializable {
     private TextField nom;
 
     @FXML
+    private Button ajout;
+
+    @FXML
     private TextField organisateur;
 
     @FXML
@@ -75,11 +85,27 @@ public class EventDashboardController implements Initializable {
     private Evenement ev;
 
     ObservableList<Evenement> listM;
-
+    int index1 = -1;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     updateTable();
+        updateEvent.setVisible(false);
+
+        editer.setOnAction(e -> {
+            Evenement event = tableView.getSelectionModel().getSelectedItem();
+            updateEvent.setVisible(true);
+            ajout.setVisible(false);
+            nom.setText(event.getNom());
+            description.setText(event.getDescription());
+            organisateur.setText(event.getOrganisateur());
+            datePicker.setValue(event.getDate().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate());
+        });
 
     }
 
@@ -109,7 +135,7 @@ public class EventDashboardController implements Initializable {
         ServiceEvenements evenements = new ServiceEvenements();
         java.util.Date date =
                 java.util.Date.from(datePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        Date sqlDate = new Date(date.getTime());
 
         Evenement evenement = new Evenement(
                 nom.getText(),
@@ -127,6 +153,37 @@ public class EventDashboardController implements Initializable {
         Evenement ev = tableView.getSelectionModel().getSelectedItem();
         se.deleteEvenement(ev);
         updateTable();
+    }
+
+    @FXML
+    public void updateProd(ActionEvent actionEvent) throws SQLException {
+        ServiceEvenements serviceEvenements = new ServiceEvenements();
+        Evenement evenement = tableView.getSelectionModel().getSelectedItem();
+        if (actionEvent.getSource() == updateEvent) {
+            String name = nom.getText();
+            String des = description.getText();
+            String org = organisateur.getText();
+            java.util.Date date = java.util.Date.from(datePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Date sqlDate = new Date(date.getTime());
+
+            evenement.setNom(name);
+            evenement.setDescription(des);
+            evenement.setOrganisateur(org);
+            evenement.setDate(sqlDate);
+            if(imageFile != null) evenement.setImage(imageFile);
+            serviceEvenements.modifyEvenement(evenement);
+            tableView.setItems(listM);
+            updateEvent.setVisible(false);
+            ajout.setVisible(true);
+            clearTexts();
+            updateTable();
+        }
+    }
+
+    void clearTexts(){
+        nom.clear();
+        description.clear();
+        organisateur.clear();
     }
 
 

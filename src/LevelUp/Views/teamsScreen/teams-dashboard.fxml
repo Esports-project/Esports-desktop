@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="361.0" prefWidth="632.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.teamsScreen.TeamsDashboardController">
+<AnchorPane fx:id="rootPane" prefHeight="361.0" prefWidth="632.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.teamsScreen.TeamsDashboardController">
    <children>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="348.0" prefWidth="651.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -33,10 +33,16 @@
                      </VBox.margin>
                   </TextField>
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="279.0" prefWidth="152.0" VBox.vgrow="ALWAYS" />
-                  <HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="154.0">
                      <children>
-                        <Button maxWidth="10000.0" mnemonicParsing="false" onAction="#deleteTeam" prefHeight="30.0" text="Delete" HBox.hgrow="ALWAYS" />
                         <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#handleCLick" prefHeight="30.0" text="Ajout Equipe" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="updateTeam" mnemonicParsing="false" onAction="#updateTeams" prefHeight="30.0" text="Update Equipe" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#deleteTeam" text="Delete" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="editer" mnemonicParsing="false" text="Update" />
                      </children>
                   </HBox>
                </children>
