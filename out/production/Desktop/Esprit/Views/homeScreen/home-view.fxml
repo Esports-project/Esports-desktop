@@ -7,7 +7,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="603.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.homeScreen.HomeController">
+<?import javafx.scene.shape.Circle?>
+<BorderPane prefHeight="603.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Views.homeScreen.HomeController">
    <center>
       <AnchorPane prefHeight="603.0" prefWidth="31.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +24,7 @@
                   <AnchorPane fx:id="gamePane" prefHeight="603.0" prefWidth="56.0" />
                   <Pane fx:id="homePane" style="-fx-background-color: black;">
                      <children>
-                        <Label layoutX="14.0" layoutY="24.0" text="Home" textFill="WHITE">
+                        <Label layoutX="14.0" layoutY="14.0" text="Home" textFill="WHITE">
                            <font>
                               <Font size="37.0" />
                            </font>
@@ -118,4 +119,38 @@
          </children>
       </VBox>
    </left>
+   <top>
+      <AnchorPane prefHeight="55.0" prefWidth="614.0" style="-fx-background-color: #262626;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox layoutX="554.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleClicks" prefHeight="57.0" prefWidth="164.0" style="-fx-background-color: transparent;" text="LevelUp" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Separator opacity="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Text fx:id="uiFullName1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome," textAlignment="CENTER" wrappingWidth="69.13671875">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text fx:id="uiFullName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="69.13671875">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Circle fill="WHITE" radius="22.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Circle>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>
