@@ -40,6 +40,9 @@ public class DashboardController implements Initializable {
     @FXML
     private Button gameBtn;
 
+    @FXML
+    private Button blogBtn;
+
 
 
 
@@ -63,7 +66,10 @@ public class DashboardController implements Initializable {
     private AnchorPane gamePane;
 
     @FXML
-    private AnchorPane productPane;
+    private AnchorPane productPane;;
+
+    @FXML
+    private AnchorPane blogPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -88,6 +94,13 @@ public class DashboardController implements Initializable {
             AnchorPane.setLeftAnchor(rankingpage, 10.0);
             AnchorPane.setRightAnchor(rankingpage, 10.0);
             rankingPane.getChildren().setAll(rankingpage);
+
+            AnchorPane blogpage = FXMLLoader.load(getClass().getResource("../blogScreen/blog-dashboard.fxml"));
+            AnchorPane.setTopAnchor(blogpage, 10.0);
+            AnchorPane.setBottomAnchor(blogpage, 10.0);
+            AnchorPane.setLeftAnchor(blogpage, 10.0);
+            AnchorPane.setRightAnchor(blogpage, 10.0);
+            blogPane.getChildren().setAll(blogpage);
 
             AnchorPane teamspage = FXMLLoader.load(getClass().getResource("../teamsScreen/teams-dashboard.fxml"));
             AnchorPane.setTopAnchor(teamspage, 10.0);
@@ -143,6 +156,9 @@ public class DashboardController implements Initializable {
         }
         if(e.getSource() == gameBtn){
             gamePane.toFront();
+        }
+        if(e.getSource() == blogBtn){
+            blogPane.toFront();
         }
     }
 }

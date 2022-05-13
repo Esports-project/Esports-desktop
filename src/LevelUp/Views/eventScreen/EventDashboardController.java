@@ -75,10 +75,7 @@ public class EventDashboardController implements Initializable {
     private Evenement ev;
 
     ObservableList<Evenement> listM;
-    int index1 = -1;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

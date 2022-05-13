@@ -180,6 +180,30 @@ public class MySqlConnect {
         return list;
     }
 
+    public static ObservableList<Blog> getBlogs(){
+        Connection conn = ConnectDb();
+        ObservableList<Blog> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from blog");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Blog g = new Blog();
+                g.setId(rs.getInt(1));
+                g.setTitre(rs.getString(2));
+                g.setContenu(rs.getString(3));
+                g.setImage(rs.getString(4));
+                g.setPost_date(rs.getDate(5));
+
+
+
+                list.add(g);
+
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static ObservableList<Commande> getDataCommandes(){
         Connection conn = ConnectDb();
         ObservableList<Commande> list = FXCollections.observableArrayList();

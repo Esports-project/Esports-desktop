@@ -170,7 +170,6 @@ public class StoreDashboardController implements Initializable {
             updateProd.setVisible(true);
             submit.setVisible(false);
             ref.setText(prod.getReferance());
-            //textImg.setText(prod.getImage());
             quantity.setText(String.valueOf(prod.getQuantity()));
             productName.setText(prod.getNom());
             description.setText(prod.getDescription());
