@@ -15,10 +15,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.text.ParseException;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
@@ -92,18 +89,16 @@ public class UserDashboardController implements Initializable {
         tableView.setItems(listM);
     }
 
-    public void editUser(ActionEvent e){
+    public void editUser(ActionEvent e) throws SQLException {
         ServiceUser sr = new ServiceUser();
         User user = tableView.getSelectionModel().getSelectedItem();
-        /*sr.editUser(new User(
+        sr.editUser(new User(
                 user.getId(),
-                user.getRoles(),
                 lastname.getText(),
-                user.getName(),
-                user.getEmail(),
-                user.getUsername(),
-                user.getBanned(),
-        ));*/
+                firstname.getText(),
+                email.getText(),
+                username.getText()
+        ));
         updateTable();
     }
 
@@ -111,6 +106,20 @@ public class UserDashboardController implements Initializable {
         ServiceUser se = new ServiceUser();
         User u = tableView.getSelectionModel().getSelectedItem();
         se.deleteUser(u);
+        updateTable();
+    }
+
+    public void banUser(ActionEvent e) throws SQLException {
+        ServiceUser user = new ServiceUser();
+        User u = tableView.getSelectionModel().getSelectedItem();
+        user.banUser(u);
+        updateTable();
+    }
+
+    public void unBanUser(ActionEvent e) throws SQLException {
+        ServiceUser user = new ServiceUser();
+        User u = tableView.getSelectionModel().getSelectedItem();
+        user.unBanUser(u);
         updateTable();
     }
 

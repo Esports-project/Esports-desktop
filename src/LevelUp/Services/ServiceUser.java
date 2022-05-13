@@ -87,18 +87,19 @@ public class ServiceUser {
         }
         return myList;
     }
+
+
     /* ----------------- Update ----------------- */
     public void editUser(User u) throws SQLException {
-        String requete = "UPDATE user SET nom=?, prenom=? ,email=?, username=?, password=? WHERE id=?";
+        String requete = "UPDATE user SET nom=?, prenom=? ,email=?, username=? WHERE id=?";
         try {
             ste = cnx.prepareStatement(requete);
             java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-            ste.setInt(7, u.getId());
+            ste.setInt(5, u.getId());
             if(u.getLastname() != null) ste.setString(1, u.getLastname());
             if(u.getName() != null) ste.setString(2, u.getName());
             if(u.getEmail() != null) ste.setString(3, u.getEmail());
-            if(u.getUsername() != null) ste.setString(5, u.getUsername());
-            if(u.getPassword() != null) ste.setString(6, u.getPassword());
+            if(u.getUsername() != null) ste.setString(4, u.getUsername());
             ste.executeUpdate();
             System.out.println("User Modfié !");
         } catch (SQLException ex) {
@@ -114,6 +115,28 @@ public class ServiceUser {
             ste.setInt(1, user.getId());
             ste.executeUpdate();
             System.out.println("User Deleted !");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public void banUser(User user) {
+        String query="UPDATE user SET banned=1 WHERE id=?";
+        try {
+            ste = cnx.prepareStatement(query);
+            ste.setInt(1, user.getId());
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public void unBanUser(User user) {
+        String query="UPDATE user SET banned=0 WHERE id=?";
+        try {
+            ste = cnx.prepareStatement(query);
+            ste.setInt(1, user.getId());
+            ste.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }

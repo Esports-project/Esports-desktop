@@ -71,7 +71,7 @@ public class HomeController implements Initializable {
     }
 
     public void setUiFullName(String name){
-        //uiFullName.setText(name);
+        uiFullName.setText(name);
     }
 
 

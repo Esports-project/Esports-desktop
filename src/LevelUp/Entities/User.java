@@ -28,6 +28,14 @@ public class User {
         this.password = password;
     }
 
+    public User(int id, String username, String email, String name, String lastname) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+    }
+
     public User(int id, int roles, String username, String email, String name, String lastname, int banned) {
         this.id = id;
         this.roles = roles;

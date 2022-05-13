@@ -48,7 +48,9 @@
                         <HBox prefWidth="200.0">
                            <children>
                               <Button fx:id="deleteBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteUser" text="Delete" HBox.hgrow="ALWAYS" />
-                              <Button fx:id="editBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="editBtn" onAction="#editUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="banBtn" onAction="#banUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Ban" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="unbanBtn" onAction="#unBanUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="unban" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                      </children>
