@@ -1,182 +1,112 @@
-package Esprit.entities;
+package Esprit.Entities;
 
 import java.util.Date;
 
 public class User {
-    private Integer id;
 
-    private Integer departement_id;
-
-    private Integer equipe_id;
-
-    private String nom;
-
-    private String prenom;
-
+    private int id;
+    private int banned;
+    private int roles;
+    private String username;
     private String email;
-
-    private Integer phone;
-
-    private Date date_join;
-
+    private String name;
+    private String lastname;
     private String password;
 
-    private String username;
+    public User() {
 
-    private Integer banned;
-
-    private String roles;
-
-    public User(Integer id, String nom, String prenom, String email, Integer phone, Date date_join, String password, String username, Integer banned) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.phone = phone;
-        this.date_join = date_join;
-        this.password = password;
-        this.username = username;
-        this.banned = banned;
     }
 
-    //No Id
-    public User(String nom, String prenom, String email, Integer phone, Date date_join, String password, String username, Integer banned, String roles) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.phone = phone;
-        this.date_join = date_join;
-        this.password = password;
-        this.username = username;
+    public User(int id, int banned, int roles, String username, String email, String name, String lastname, String password) {
+        this.id = id;
         this.banned = banned;
         this.roles = roles;
-    }
-
-    public User(Integer id, String nom, String prenom, String email, Integer phone, String password, String username) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.phone = phone;
-        this.password = password;
         this.username = username;
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+        this.password = password;
     }
 
-    public User(Integer id) {
+    public User(int id, String username, String email, String name, String lastname) {
         this.id = id;
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
     }
 
-    public User() {
+    public User(int id, int roles, String username, String email, String name, String lastname, int banned) {
+        this.id = id;
+        this.roles = roles;
+        this.banned = banned;
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public Integer getDepartement_id() {
-        return departement_id;
+    public int getBanned() {
+        return banned;
     }
 
-    public Integer getEquipe_id() {
-        return equipe_id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public Date getDate_join() {
-        return date_join;
-    }
-
-    public String getPassword() {
-        return password;
+    public int getRoles() {
+        return roles;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public Integer getBanned() {
-        return banned;
+    public String getEmail() {
+        return email;
     }
 
-    public String getRoles() {
-        return roles;
+    public String getName() {
+        return name;
     }
 
-    public void setId(Integer id) {
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setDepartement_id(Integer departement_id) {
-        this.departement_id = departement_id;
+    public void setBanned(int banned) {
+        this.banned = banned;
     }
 
-    public void setEquipe_id(Integer equipe_id) {
-        this.equipe_id = equipe_id;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
-
-    public void setDate_join(Date date_join) {
-        this.date_join = date_join;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRoles(int roles) {
+        this.roles = roles;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setBanned(Integer banned) {
-        this.banned = banned;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", phone=" + phone +
-                ", date_join='" + date_join + '\'' +
-                ", password='" + password + '\'' +
-                ", username='" + username + '\'' +
-                ", banned=" + banned +
-                '}';
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

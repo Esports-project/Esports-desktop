@@ -26,6 +26,32 @@ public class MySqlConnect {
 
     }
 
+    public static ObservableList<User> getDataUser(){
+        Connection conn = ConnectDb();
+        ObservableList<User> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from user");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt(1));
+                user.setUsername(rs.getString(10));
+                user.setEmail(rs.getString(6));
+                user.setLastname(rs.getString(4));
+                user.setName(rs.getString(5));
+                user.setRoles(rs.getInt(13));
+                user.setBanned(rs.getInt(12));
+
+                list.add(user);
+            }
+        } catch (Exception e) {
+        }
+
+        System.out.println(list);
+        return list;
+    }
+
     public static ObservableList<Produit> getDataProduit(){
         Connection conn = ConnectDb();
         ObservableList<Produit> list = FXCollections.observableArrayList();

@@ -14,6 +14,7 @@
          <children>
             <StackPane fx:id="pane" prefHeight="348.0" prefWidth="651.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
+                  <AnchorPane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
                   <AnchorPane fx:id="recPane" style="-fx-background-color: white;" />
                   <AnchorPane fx:id="eventPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
                   <AnchorPane fx:id="rankingPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
@@ -43,6 +44,11 @@
          <children>
             <VBox layoutX="15.0" layoutY="13.0" prefHeight="345.0" prefWidth="129.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
+                  <Button fx:id="userBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Users" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
                   <Button fx:id="reclamationBtn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: black;" text="Reclamation" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />

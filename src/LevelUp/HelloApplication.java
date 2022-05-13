@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("Views/homeScreen/home-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Views/loginScreen/hello-view.fxml"));
 
 
         root.setOnMousePressed(event -> {

@@ -43,12 +43,18 @@ public class DashboardController implements Initializable {
     @FXML
     private Button blogBtn;
 
+    @FXML
+    private Button userBtn;
+
 
 
 
 
     @FXML
     private AnchorPane recPane;
+
+    @FXML
+    private AnchorPane userPane;
 
     @FXML
     private AnchorPane eventPane;
@@ -109,12 +115,12 @@ public class DashboardController implements Initializable {
             AnchorPane.setRightAnchor(teamspage, 10.0);
             teamsPane.getChildren().setAll(teamspage);
 
-            AnchorPane msgpage = FXMLLoader.load(getClass().getResource("../messageScreen/msg-view-admin.fxml"));
+            /*AnchorPane msgpage = FXMLLoader.load(getClass().getResource("../messageScreen/msg-view-admin.fxml"));
             AnchorPane.setTopAnchor(msgpage, 10.0);
             AnchorPane.setBottomAnchor(msgpage, 10.0);
             AnchorPane.setLeftAnchor(msgpage, 10.0);
             AnchorPane.setRightAnchor(msgpage, 10.0);
-            msgPane.getChildren().setAll(msgpage);
+            msgPane.getChildren().setAll(msgpage);*/
 
             AnchorPane prpage = FXMLLoader.load(getClass().getResource("../storeScreen/store-dashboard.fxml"));
             AnchorPane.setTopAnchor(prpage, 10.0);
@@ -130,6 +136,13 @@ public class DashboardController implements Initializable {
             AnchorPane.setRightAnchor(gamepage, 10.0);
             gamePane.getChildren().setAll(gamepage);
 
+            AnchorPane userpage = FXMLLoader.load(getClass().getResource("../userScreen/user-dashboard.fxml"));
+            AnchorPane.setTopAnchor(userpage, 10.0);
+            AnchorPane.setBottomAnchor(userpage, 10.0);
+            AnchorPane.setLeftAnchor(userpage, 10.0);
+            AnchorPane.setRightAnchor(userpage, 10.0);
+            userPane.getChildren().setAll(userpage);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -138,6 +151,9 @@ public class DashboardController implements Initializable {
     public void handleClicks(ActionEvent e){
         if(e.getSource() == eventBtn){
             eventPane.toFront();
+        }
+        if(e.getSource() == userBtn){
+            userPane.toFront();
         }
         if(e.getSource() == reclamationBtn){
             recPane.toFront();
