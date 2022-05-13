@@ -19,6 +19,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.List;
+import Esprit.Views.storeScreen.*;
 
 public class CartController {
 
@@ -147,7 +148,5 @@ public class CartController {
         AnchorPane.setLeftAnchor(storePage, 10.0);
         AnchorPane.setRightAnchor(storePage, 10.0);
         rootPannel.getChildren().setAll(storePage);
-
-
     }
 }

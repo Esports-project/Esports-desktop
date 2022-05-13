@@ -33,13 +33,13 @@ public class ServiceCommande {
             Commande co = new Commande();
             comm.setStatus("In Progress");
             comm.setUser_id(0);
-            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            Date date = new Date(Calendar.getInstance().getTime().getTime());
             comm.setDate(date);
             comm.setPrix_total(ShoppingCart.getInstance().calculateTotal());
             ServiceLigneCommande serlc = new ServiceLigneCommande();
             List<CartEntry> entries = ShoppingCart.getInstance().getEntries();
             comm.setQuantite(entries.size());
-            java.sql.Date date1 = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            Date date1 = new Date(Calendar.getInstance().getTime().getTime());
             String requete = "INSERT INTO commande (date,quantite,prix_total,user_id,status) VALUES(?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setDate(1, (Date) comm.getDate());

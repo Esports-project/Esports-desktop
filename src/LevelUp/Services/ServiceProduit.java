@@ -1,7 +1,9 @@
 package Esprit.Services;
 
 import Esprit.Connection.MyConnection;
+import Esprit.Entities.LigneCommande;
 import Esprit.Entities.Produit;
+import com.itextpdf.text.Paragraph;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -26,7 +28,7 @@ public class ServiceProduit {
             String requete = "INSERT INTO produit (nom,quantity,price,description,image,solde,active,referance,updated_at) VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
 
-            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            Date date = new Date(Calendar.getInstance().getTime().getTime());
 
             pst.setString(1, p.getNom());
             pst.setInt(2, p.getQuantity());
@@ -89,7 +91,7 @@ public class ServiceProduit {
             ste.setFloat(6, p.getSolde());
             ste.setBoolean(7, p.isActive());
             ste.setString(8, p.getReferance());
-            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            Date date = new Date(Calendar.getInstance().getTime().getTime());
             ste.setDate(9, date);
 
             ste.executeUpdate();
@@ -164,6 +166,34 @@ public class ServiceProduit {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Produit> ProduitList() {
+        List<Produit> myList = new ArrayList<Produit>();
+        String requete = "SELECT * from produit";
+        try {
+            Statement st;
+            st = MyConnection.getInstance().getConnection().prepareStatement(requete);
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
+                Produit prod = new Produit();
+                prod.setId(rs.getInt(1));
+                prod.setNom(rs.getString(2));
+                prod.setQuantity(rs.getInt(3));
+                prod.setPrice(rs.getFloat(4));
+                prod.setDescription(rs.getString(5));
+                prod.setImage(rs.getString(6));
+                prod.setSolde(rs.getFloat(7));
+                prod.setActive(rs.getBoolean(8));
+                prod.setReferance(rs.getString(9));
+                prod.setUpdatedAt(rs.getDate(10));
+
+                myList.add(prod);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return myList;
     }
 
     public void reduceQuantityComm(Produit prod, int qte) throws SQLException {

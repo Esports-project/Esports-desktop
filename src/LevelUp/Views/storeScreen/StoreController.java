@@ -172,6 +172,7 @@ public class StoreController implements Initializable{
 
     @FXML
     private void loadSecond(ActionEvent actionEvent) throws IOException {
+        produits.addAll(getData());
         AnchorPane cartPage = FXMLLoader.load(getClass().getResource("cart.fxml"));
         AnchorPane.setTopAnchor(cartPage, 10.0);
         AnchorPane.setBottomAnchor(cartPage, 10.0);

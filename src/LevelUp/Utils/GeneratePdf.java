@@ -1,7 +1,9 @@
 package Esprit.Utils;
 import Esprit.Entities.Commande;
 import Esprit.Entities.LigneCommande;
+import Esprit.Entities.Produit;
 import Esprit.Services.ServiceLigneCommande;
+import Esprit.Services.ServiceProduit;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -21,9 +23,9 @@ public class GeneratePdf {
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
             Paragraph paragraph=new Paragraph("LevelUp Invoice#"+commande.getId());
-            Paragraph price = new Paragraph(new Phrase("\n\nPrix Total : "+commande.getPrix_total(), FontFactory.getFont(FontFactory.HELVETICA, 22))+"\n");
-           // Image img=Image.getInstance("C:\\Users\\Rayen BOURGUIBA\\Desktop\\Esports-desktop-Rayen\\src\\LevelUp\\img\\logo-dark.png");
-           // img.setAlignment(Element.ALIGN_CENTER);
+            Paragraph price = new Paragraph(new Phrase("\n\nPrix Total : "+commande.getPrix_total(), FontFactory.getFont(FontFactory.HELVETICA, 22))+"\n\n\n");
+            Image img=Image.getInstance("src\\LevelUp\\Resources\\logo-dark.png");
+            img.setAlignment(Element.ALIGN_CENTER);
             PdfPTable table=new PdfPTable(3);
             PdfPCell c1=new PdfPCell(new Phrase("Produit"));
             table.addCell(c1);
@@ -34,20 +36,30 @@ public class GeneratePdf {
             table.setHeaderRows(1);
 
             ServiceLigneCommande serviceLigneCommande =new ServiceLigneCommande();
+            ServiceProduit serviceProduit =new ServiceProduit();
             List<LigneCommande> list = serviceLigneCommande.LigneCommandeList();
+            List<Produit> listProd = serviceProduit.ProduitList();
+            float prix=0;
             for (int i=0; i<list.size();i++){
                 LigneCommande ligneCommande = list.get(i);
+                for (int j=0; j<listProd.size();j++){
+                    Produit produit =listProd.get(j);
+                    if (produit.getId()==ligneCommande.getIdProduit()){
+                        prix=produit.getPrice();
+                    }
+                }
                 if (ligneCommande.getIdCommande()==commande.getId()){
                     System.out.println(ligneCommande);
                     PdfPCell c4=new PdfPCell(new Phrase(""+ligneCommande.getIdProduit()));
                     table.addCell(c4);
                     PdfPCell c5=new PdfPCell(new Phrase(""+ligneCommande.getQuantite()));
                     table.addCell(c5);
-                    PdfPCell c6=new PdfPCell(new Phrase(""+ligneCommande.getIdCommande()));
+                    prix=prix*ligneCommande.getQuantite();
+                    PdfPCell c6=new PdfPCell(new Phrase(""+prix));
                     table.addCell(c6);
                 }}
             document.add(paragraph);
-           // document.add(img);
+            document.add(img);
             document.add(price);
             document.add(table);
             document.close();

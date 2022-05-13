@@ -1,7 +1,6 @@
 package Esprit.Views.storeScreen;
 
 import Esprit.Connection.MySqlConnect;
-import Esprit.Entities.Commande;
 import Esprit.Entities.LigneCommande;
 import Esprit.Entities.Produit;
 import Esprit.Services.ServiceLigneCommande;
@@ -19,9 +18,6 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
@@ -29,6 +25,10 @@ import java.util.ResourceBundle;
 public class StoreDashboardController implements Initializable {
     @FXML
     private AnchorPane rootpane;
+
+    public AnchorPane rootPageStore(){
+        return rootpane;
+    }
 
     @FXML
     private TextField productName;
