@@ -115,12 +115,12 @@ public class DashboardController implements Initializable {
             AnchorPane.setRightAnchor(teamspage, 10.0);
             teamsPane.getChildren().setAll(teamspage);
 
-            /*AnchorPane msgpage = FXMLLoader.load(getClass().getResource("../messageScreen/msg-view-admin.fxml"));
+            AnchorPane msgpage = FXMLLoader.load(getClass().getResource("../messageScreen/msg-view-admin.fxml"));
             AnchorPane.setTopAnchor(msgpage, 10.0);
             AnchorPane.setBottomAnchor(msgpage, 10.0);
             AnchorPane.setLeftAnchor(msgpage, 10.0);
             AnchorPane.setRightAnchor(msgpage, 10.0);
-            msgPane.getChildren().setAll(msgpage);*/
+            msgPane.getChildren().setAll(msgpage);
 
             AnchorPane prpage = FXMLLoader.load(getClass().getResource("../storeScreen/store-dashboard.fxml"));
             AnchorPane.setTopAnchor(prpage, 10.0);

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -9,11 +13,30 @@
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Events" textFill="WHITE">
-               <font>
-                  <Font size="37.0" />
-               </font>
-            </Label>
+            <HBox>
+               <children>
+                  <Label text="Events" textFill="WHITE">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
+                  <Separator opacity="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Label text="Recherche" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="10.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="searchText">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Separator opacity="0.0" prefWidth="200.0" />
+               </children>
+            </HBox>
             <AnchorPane VBox.vgrow="ALWAYS">
                <children>
                   <VBox fx:id="eventList" prefHeight="510.0" prefWidth="599.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

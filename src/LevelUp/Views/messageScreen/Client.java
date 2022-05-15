@@ -1,6 +1,9 @@
 package Esprit.Views.messageScreen;
 
+import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.*;
 import java.net.Socket;
@@ -34,6 +37,7 @@ public class Client {
     }
 
     public void receiveMessageFromServer(VBox vBox){
+
 
         new Thread(new Runnable() {
             @Override

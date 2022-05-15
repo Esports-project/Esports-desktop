@@ -60,7 +60,8 @@ public class RegisterController {
 
         if(checkFields(username,email, firstname, lastname, pw))
         {
-            String qry = String.format("INSERT INTO user (username,email,prenom,nom,password, roles, banned) VALUES ('%s','%s','%s','%s','%s', 0, 0)", username, email, firstname, lastname,pw);
+
+            String qry = String.format("INSERT INTO user (username,email,prenom,nom,password, roles, banned, phone) VALUES ('%s','%s','%s','%s','%s', 0,0,0)", username, email, firstname, lastname,pw);
             Statement stm = null;
             try {
                 stm = cnx.createStatement();

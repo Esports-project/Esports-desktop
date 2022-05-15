@@ -63,7 +63,7 @@ public class HelloController {
                 Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
-                LoadHome(loader.getController());
+
             }catch(Exception e) {
                 e.printStackTrace();
             }
@@ -123,8 +123,5 @@ public class HelloController {
         pwField.clear();
     }
 
-    public void LoadHome(HomeController homeController) {
-        homeController.setUiFullName(CurrentUser.get().getUsername());
-    }
 
 }

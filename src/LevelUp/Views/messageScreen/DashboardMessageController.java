@@ -21,6 +21,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 
 import java.io.IOException;
@@ -57,6 +59,7 @@ public class DashboardMessageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         updateTable();
         try{
             client = new Client(new Socket("localhost", 6969));
@@ -91,6 +94,13 @@ public class DashboardMessageController implements Initializable {
                             date,
                             0
                     );
+
+                    Notifications notificationBuilder=Notifications.create()
+                            .title("You received a message")
+                            .graphic(null)
+                            .hideAfter(Duration.seconds(5))
+                            .position(Pos.TOP_RIGHT);
+                    notificationBuilder.showConfirm();
 
                     sm.addMessage(message);
                     HBox hBox = new HBox();

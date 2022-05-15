@@ -14,7 +14,9 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,6 +68,35 @@ public class ServiceEvenements {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public List<Evenement> readEvenementsWithSearch(String stxt) {
+        ArrayList<Evenement> events = new ArrayList();
+        stxt = "%" + stxt + "%";
+        String req = "SELECT * FROM evenement WHERE nom LIKE ? OR organisateur LIKE ? OR description LIKE ?;";
+        System.out.println(stxt);
+        try {
+            PreparedStatement st;
+
+            st= cnx.prepareStatement(req);
+            st.setString(1, stxt);
+            st.setString(2, stxt);
+            st.setString(3, stxt);
+            System.out.println("prepared statement : " + st);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+
+                events.add(
+                        new Evenement(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6)));
+
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return events;
     }
 
     public void deleteEvenement(Evenement e) {
@@ -128,6 +159,27 @@ public class ServiceEvenements {
         return null;
     }
 
+    public Map<String,Integer> readStatsPerMonth() {
+        Map<String,Integer> events = new HashMap<String, Integer>();
+        String req = "SELECT DATE_FORMAT(date, '%Y/%m'), COUNT(*) FROM evenement GROUP BY DATE_FORMAT(date, '%Y/%m')";
+        try {
+            Statement st;
+
+            st= MyConnection.getInstance().getConnection().prepareStatement(req);
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                events.put(rs.getString(1), rs.getInt(2));
+
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return events;
+    }
     public  String getNameFromID(Integer id){
         String name = "";
         String query = "SELECT nom from evenement WHERE id=?";

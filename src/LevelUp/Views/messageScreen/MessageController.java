@@ -19,6 +19,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -46,8 +48,6 @@ public class MessageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new Thread(() -> {
-
-
         try{
 
             server = new Server(new ServerSocket(6969));
@@ -64,6 +64,7 @@ public class MessageController implements Initializable {
         sendBtn.setOnAction(event -> {
             String messageToSend = textField.getText();
             if(!messageToSend.isEmpty()){
+
                 Date date = new Date(Calendar.getInstance().getTime().getTime());
                 ServiceMessage sm = new ServiceMessage();
                 Messages message = new Messages(

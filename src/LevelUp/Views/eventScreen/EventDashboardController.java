@@ -8,12 +8,17 @@ import Esprit.Entities.Reclamation;
 import Esprit.Services.ServiceEvenements;
 import Esprit.Services.ServiceGames;
 import Esprit.Services.ServiceProduit;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -25,13 +30,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import java.util.Calendar;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class EventDashboardController implements Initializable {
 
@@ -75,6 +80,16 @@ public class EventDashboardController implements Initializable {
     private TextArea description;
 
     @FXML
+    private Button statBtn;
+
+    @FXML
+    private StackedBarChart<String, Integer> statsEvents;
+    @FXML
+    private NumberAxis statsNumberAxis;
+
+
+
+    @FXML
     private DatePicker datePicker;
 
     @FXML
@@ -82,7 +97,7 @@ public class EventDashboardController implements Initializable {
 
     private String imageFile;
 
-    private Evenement ev;
+
 
     ObservableList<Evenement> listM;
 
@@ -106,6 +121,25 @@ public class EventDashboardController implements Initializable {
                     .toLocalDate());
         });
 
+
+
+        statsEvents.setTitle("Evenements par mois");
+        ServiceEvenements se = new ServiceEvenements();
+        Map<String,Integer> theStats = se.readStatsPerMonth();
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        List<String> monthsList = new ArrayList<String>();
+        for (Map.Entry<String,Integer> entry : theStats.entrySet())
+        {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+            monthsList.add(entry.getKey());
+        }
+        statsNumberAxis.setAutoRanging(false);
+        statsNumberAxis.setTickUnit(2);
+        statsNumberAxis.setLowerBound(0);
+        statsNumberAxis.setUpperBound(12);
+        ((CategoryAxis)statsEvents.getXAxis()).setCategories(FXCollections.observableArrayList(monthsList));
+        statsEvents.getData().addAll(series);
+
     }
 
     public void updateTable() {
@@ -118,6 +152,7 @@ public class EventDashboardController implements Initializable {
         colImage.setCellValueFactory(new PropertyValueFactory<Evenement, String>("image"));
         colDate.setCellValueFactory(new PropertyValueFactory<Evenement, java.util.Date>("date"));
 
+        statsEvents.getScene();
         listM = MySqlConnect.getDataEvenement();
         tableView.setItems(listM);
     }
